@@ -6,6 +6,7 @@ public class Card{
 
     private int num;
     KIND kind;
+    private String name;
 
     public enum KIND{
         ATTACK, DEFENCE, HEAL;
@@ -14,9 +15,10 @@ public class Card{
         } 
     }
 
-    public Card(int num, KIND kind){
+    public Card(int num, KIND kind, String name){
         this.num = num;
         this.kind = kind;
+        this.name = name;
     }
     /**
      * カードの（攻撃力，防御力などの）値を表すnumを返す
@@ -33,5 +35,9 @@ public class Card{
      */
     public KIND getKind(){
         return kind;
+    }
+
+    public String getName(){
+        return name;
     }
 }
