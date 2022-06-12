@@ -10,12 +10,9 @@ public class Tuyu {
         player = new ArrayList<>();
     }
 
-    public void AddPlayer(Strategy strategy){
+    public void addPlayer(String strategy){
         player.add(new Player(strategy));
     }
 
-    public static void main(String[] args) {
-        
-    }
-    
+
 }
