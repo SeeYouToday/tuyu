@@ -5,7 +5,6 @@ public class Testdrive {
 		Player 女 = new Player(Strategy.STRATEGY.GIRLSTRATEGY.name());
 		System.out.println(男.getHP());
 		System.out.println(女.getHP());
-
 	}
 
 }
