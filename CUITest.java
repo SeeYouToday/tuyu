@@ -14,6 +14,6 @@ public class CUITest {
 	}
 	
 	private static void printCard(Tuyu tuyu, int playerNum, int cardNum) {
-		System.out.println(tuyu.getCardName(playerNum, cardNum));
+		System.out.print("名前: " + tuyu.getCardName(playerNum, cardNum) + "攻撃力: " + tuyu.getCardPower(playerNum, cardNum) + "種類: " + tuyu.getCardKind(playerNum, cardNum)+"\n");
 	}
 }
