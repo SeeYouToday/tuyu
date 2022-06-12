@@ -39,7 +39,7 @@ public class GirlStrategy {
             }
         }
         if(ret == 999){
-            girl.getHand().add(girl.getDeck().drow());
+            girl.getHand().add(girl.getDeck().draw());
         }
         return ret;
     }
@@ -101,7 +101,7 @@ public class GirlStrategy {
             }
         }
         if(ret == 999){
-            girl.getHand().add(girl.getDeck().drow());
+            girl.getHand().add(girl.getDeck().draw());
         }
         return ret;
     }

@@ -14,7 +14,7 @@ public class Deck {
 
     }
 
-    public Card drow(){
+    public Card draw(){
         return decks.remove(0);
     }
 }

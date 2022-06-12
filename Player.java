@@ -19,7 +19,7 @@ public class Player {
         this.handMaisu = handMaisu;
         this.isDefence = true;
         for(int i = 0; i < handMaisu; i++){
-            hand.add(deck.drow());
+            hand.add(deck.draw());
         }
     }
 

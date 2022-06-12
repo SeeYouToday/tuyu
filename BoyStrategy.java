@@ -39,7 +39,7 @@ public class BoyStrategy implements Strategy{
         }
 
         if(ret == 999){
-            boy.getHand().add(boy.getDeck().drow());
+            boy.getHand().add(boy.getDeck().draw());
         }
         return ret;
     }
@@ -101,7 +101,7 @@ public class BoyStrategy implements Strategy{
         }
 
         if(ret == 999){
-            boy.getHand().add(boy.getDeck().drow());
+            boy.getHand().add(boy.getDeck().draw());
         }
         return ret;
     }
