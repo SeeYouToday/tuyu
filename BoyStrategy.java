@@ -8,17 +8,17 @@ public class BoyStrategy implements Strategy{
         Card max = null;
         Card min = null;
         Card tmp;
-        boolean frag = false;
+        boolean flag = false;
         for(int i = 0; i < boy.getHandMaisu(); i++){
             if(boy.getHand().check(i).getKind().equals(Card.KIND.ATTACK)){
                 max = boy.getHand().check(i);
                 min = max;
-                frag = true;
+                flag = true;
                 break;
             }
         }
-        if(frag){
-            if(boy.getHandMaisu() < 3){
+        if(flag){
+            if(boy.getHandMaisu() < 4){
                 for(int i = 1; i < boy.getHandMaisu(); i++){
                     tmp = boy.getHand().check(i);
                     if(max.getNum() < tmp.getNum()){
@@ -39,7 +39,7 @@ public class BoyStrategy implements Strategy{
         }
 
         if(ret == 999){
-            boy.getHand().add(boy.getDeck().drow());
+            boy.getHand().add(boy.getDeck().draw());
         }
         return ret;
     }
@@ -101,7 +101,7 @@ public class BoyStrategy implements Strategy{
         }
 
         if(ret == 999){
-            boy.getHand().add(boy.getDeck().drow());
+            boy.getHand().add(boy.getDeck().draw());
         }
         return ret;
     }

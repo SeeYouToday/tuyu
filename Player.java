@@ -19,7 +19,7 @@ public class Player {
         this.handMaisu = handMaisu;
         this.isDefence = true;
         for(int i = 0; i < handMaisu; i++){
-            hand.add(deck.drow());
+            hand.add(deck.draw());
         }
     }
 
@@ -72,18 +72,34 @@ public class Player {
         return isDefence;
     }
 
+    /**
+     * 手札を返すゲッター
+     * @return 手札
+     */
     public Hand getHand(){
         return hand;
     }
 
+    /**
+     * デッキを返すゲッター
+     * @return デッキ
+     */
     public Deck getDeck(){
         return deck;
     }
 
+    /**
+     * 相手からのダメージのセッター
+     * @param pain 痛み
+     */
     public void setPain(int pain){
         this.pain = pain;
     }
 
+    /**
+     * 痛みを返す
+     * @return　相手の攻撃力
+     */
     public int getPain(){
         return pain;
     }
