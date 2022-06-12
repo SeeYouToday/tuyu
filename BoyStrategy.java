@@ -18,7 +18,7 @@ public class BoyStrategy implements Strategy{
             }
         }
         if(flag){
-            if(boy.getHandMaisu() < 3){
+            if(boy.getHandMaisu() < 4){
                 for(int i = 1; i < boy.getHandMaisu(); i++){
                     tmp = boy.getHand().check(i);
                     if(max.getNum() < tmp.getNum()){

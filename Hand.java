@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class Hand {
+public class Hand {
     protected ArrayList<Card> hands = new ArrayList<>();
     public Hand(){
 
