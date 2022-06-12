@@ -30,13 +30,18 @@ public class Player {
 		*/
 	}
 
+	/**
+	 * 戦略のインスタンス化するセッター
+	 * @param strategyName 戦略の名前
+	 * @return インスタンスを返す
+	 */
 	public Strategy setStrategy(String strategyName) {
 		if (strategyName.equals(Strategy.STRATEGY.BOYSTRATEGY.name())) {
 			return new BoyStrategy();
 		} else if (strategyName.equals(Strategy.STRATEGY.GIRLSTRATEGY.name())) {
 			return new GirlStrategy();
 		}
-		System.out.println("いや");
+
 		return null;
 
 	}
