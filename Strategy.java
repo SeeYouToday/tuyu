@@ -23,12 +23,36 @@ public abstract class Strategy {
 		return null;
 	}
 
+	/**
+	 * hpのゲッター
+	 * @return 現在の体力
+	 */
 	public int getterHp() {
 		return hp;
 	}
 
+	/**
+	 * hpのセッター
+	 * @param 現在の体力
+	 */
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	/**
+	 * maisuuのゲッター
+	 * @return 手札の枚数
+	 */
 	public int getterMaisuu() {
 		return maisuu;
+	}
+
+	/**
+	 * handのセッター
+	 * @param 手札の枚数
+	 */
+	public void setMaisu(int maisuu) {
+		this.maisuu = maisuu;
 	}
 
 	/**
@@ -42,4 +66,5 @@ public abstract class Strategy {
 	 * @return 防御カード
 	 */
 	public abstract int decideDefence(Player player);
+
 }
