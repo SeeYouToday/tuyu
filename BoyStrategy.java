@@ -48,7 +48,7 @@ public class BoyStrategy extends Strategy {
 		}
 
 		if (ret == 999) {
-			boy.getHand().add(boy.getDeck().draw());
+			boy.getHand().add(Deck.getInstance().draw());
 		}
 		return ret;
 	}
@@ -118,7 +118,7 @@ public class BoyStrategy extends Strategy {
 		}
 
 		if (ret == 999) {
-			boy.getHand().add(boy.getDeck().draw());
+			boy.getHand().add(Deck.getInstance().draw());
 		}
 		return ret;
 	}

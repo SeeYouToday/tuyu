@@ -27,7 +27,7 @@ public abstract class Strategy {
 	 * hpのゲッター
 	 * @return 現在の体力
 	 */
-	public int getterHp() {
+	public int getHp() {
 		return hp;
 	}
 
@@ -43,7 +43,7 @@ public abstract class Strategy {
 	 * maisuuのゲッター
 	 * @return 手札の枚数
 	 */
-	public int getterMaisuu() {
+	public int getMaisuu() {
 		return maisuu;
 	}
 
