@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * このゲームのメインとなるクラス
  */
@@ -5,11 +7,11 @@ public class Tuyu {
 	private ArrayList<Player> player;
 
     public Tuyu(){
-        player = new ArrayList<>;
+        player = new ArrayList<>();
     }
 
-    public AddPlayer(Strategy strategy){
-        player.add(strategy);
+    public void AddPlayer(Strategy strategy){
+        player.add(new Player(strategy));
     }
 
     public static void main(String[] args) {
