@@ -1,3 +1,6 @@
+/**
+ * プレーヤーの内部情報保持クラス
+ */
 public class Player {
     private int hp;
     private int handMaisu;

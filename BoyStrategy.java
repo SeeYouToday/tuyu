@@ -3,6 +3,14 @@ public class BoyStrategy implements Strategy{
     public BoyStrategy(){
         boy = new Player(40, 3);
     }
+    /**
+     * 攻撃カードの選択をする
+     * ただし選択してreturnするのはCardクラスのオブジェクトじゃなくカードが手札の何番目にあるかを返す
+     * 
+     * 選択基準は自身の手札枚数
+     * 最大火力を出すか最小火力を出すの二択
+     * @return 使用カードが手札の何番目にあるか
+     */
     public int decideAttack(){
         int ret = 999;
         Card max = null;
@@ -43,6 +51,14 @@ public class BoyStrategy implements Strategy{
         }
         return ret;
     }
+    /**
+     * 防御カードを選択する
+     * 攻撃と同様手札の何番目にあるかを返す
+     * 
+     * 選択基準は自身の体力
+     * 今回相手が選択した攻撃カードの攻撃力より小さい最大防御力または攻撃力より大きい最小防御力
+     * @return 使用カードが手札の何番目にあるか
+     */
     public int decideDefence(){
         int ret = 999;
         Card max = null;
