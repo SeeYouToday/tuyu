@@ -4,5 +4,6 @@ public class CUITest {
 		Tuyu tuyu = new Tuyu();
         tuyu.addPlayer("BOYSTRATEGY");
         tuyu.addPlayer("GIRLSTRATEGY");
+        
 	}
 }
