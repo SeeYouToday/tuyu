@@ -8,16 +8,16 @@ public class BoyStrategy implements Strategy{
         Card max = null;
         Card min = null;
         Card tmp;
-        boolean frag = false;
+        boolean flag = false;
         for(int i = 0; i < boy.getHandMaisu(); i++){
             if(boy.getHand().check(i).getKind().equals(Card.KIND.ATTACK)){
                 max = boy.getHand().check(i);
                 min = max;
-                frag = true;
+                flag = true;
                 break;
             }
         }
-        if(frag){
+        if(flag){
             if(boy.getHandMaisu() < 3){
                 for(int i = 1; i < boy.getHandMaisu(); i++){
                     tmp = boy.getHand().check(i);
