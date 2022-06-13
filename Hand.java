@@ -27,7 +27,12 @@ public class Hand {
      * @return 指定した手札位置のカード
      */
     public Card use(int i){
-        return this.hands.remove(i);
+        if(i == -1){
+            return new Card(0, Card.KIND.TOKEN, "何もできないお！");
+        }else{
+            return this.hands.remove(i);
+        }
+        
     }
 
     /**
