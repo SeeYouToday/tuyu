@@ -1,5 +1,4 @@
 public class GirlStrategy extends Strategy {
-	private Player girl;
 
 	public GirlStrategy() {
 		hp = 30;
