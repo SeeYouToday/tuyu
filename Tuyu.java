@@ -8,7 +8,7 @@ public class Tuyu {
 	 * player: ゲームを行うプレイヤーのリスト
 	 * deck: シングルトンパターンであるDeckクラスの参照型変数
 	 */
-	private ArrayList<Player> players;
+	protected ArrayList<Player> players;
 	Deck deck = Deck.getInstance();
 
 	/**
@@ -77,8 +77,19 @@ public class Tuyu {
 		return getCard(playerNum, cardNum).getKind();
 	}
 
-    public int decideAttack(int playerNum) {
-    	return players.get(playerNum).getStrategy().decideAttack(players.get(playerNum));
+   private Card decideAttackCard(int playerNum) {
+    	return players.get(playerNum).getHand().use(players.get(playerNum).getStrategy().decideAttack(players.get(playerNum)));
     }
 
+    public String getAttackCardName(int playerNum) {
+    	return decideAttackCard(playerNum).getName();
+    }
+
+    public String getAttackCardPower(int playerNum) {
+    	return decideAttackCard(playerNum).getName();
+    }
+
+    public String getAttackCardKind(int playerNum) {
+    	return decideAttackCard(playerNum).getName();
+    }
 }

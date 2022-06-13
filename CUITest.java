@@ -15,7 +15,7 @@ public class CUITest {
         printCard(tuyu, 1, 0);
         printCard(tuyu, 1, 1);
 
-        System.out.println(tuyu.decideAttack(1));
+        System.out.println(tuyu.getAttackCardName(1));
 
 	}
 
