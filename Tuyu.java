@@ -10,7 +10,6 @@ public class Tuyu {
 	 */
 	protected ArrayList<Player> players;
 	Deck deck = Deck.getInstance();
-
 	/**
 	 * コンストラクタ
 	 * playerのArrayList作成
@@ -25,6 +24,15 @@ public class Tuyu {
      */
     public void addPlayer(String strategy){
         players.add(new Player(strategy));
+    }
+    
+    /**
+     * プレイヤーのゲッター
+     * @param playerNum プレイヤー（はじめの人が0）
+     * @return 
+     */
+    public Player getPlayer(int playerNum) {
+    	return players.get(playerNum);
     }
 
     /**
@@ -83,7 +91,7 @@ public class Tuyu {
      * @return 攻撃で選ばれたCardオブジェクト
      */
     private Card decideAttackCard(int playerNum) {
-    	return players.get(playerNum).getHand().check(players.get(playerNum).getStrategy().decideAttack(players.get(playerNum)));
+    	return players.get(playerNum).getHand().use(players.get(playerNum).getStrategy().decideAttack(players.get(playerNum)));
     }
     
     /**
@@ -110,7 +118,7 @@ public class Tuyu {
      * @return 防御で選ばれたCardオブジェクト
      */
     private Card decideDefenceCard(int playerNum) {
-    	return players.get(playerNum).getHand().check(players.get(playerNum).getStrategy().decideDefence(players.get(playerNum)));
+    	return players.get(playerNum).getHand().use(players.get(playerNum).getStrategy().decideDefence(players.get(playerNum)));
     }
     
     /**
@@ -129,5 +137,50 @@ public class Tuyu {
      */
     public int getDefenceCardPower(int playerNum) {
     	return decideDefenceCard(playerNum).getNum();
+    }
+    
+    public void playerZeroAction() {
+    	TuyuAction tuyuAction = new TuyuAction(decideAttackCard(0), decideDefenceCard(1), this);
+    	tuyuAction.action(1);
+    	
+    }
+    
+    public void playerOneAction() {
+    	TuyuAction tuyuAction = new TuyuAction(decideAttackCard(1), decideDefenceCard(0), this);
+    	tuyuAction.action(0);
+    	
+    }
+    
+    public void actions() {
+		System.out.println("player0のHP: "+getPlayer(0).getHP());
+		System.out.println("player1のHP: "+getPlayer(1).getHP());
+		System.out.println();
+    	while (getPlayer(0).getHP()>0 && getPlayer(1).getHP()>0) {
+			playerZeroAction();
+			System.out.println("player0のHP: "+getPlayer(0).getHP());
+    		System.out.println("player1のHP: "+getPlayer(1).getHP());
+    		System.out.println();
+			playerOneAction();
+    		System.out.println("player0のHP: "+getPlayer(0).getHP());
+    		System.out.println("player1のHP: "+getPlayer(1).getHP());
+    		System.out.println();
+    		if (getPlayer(0).getHand().check(0).getKind()==Card.KIND.END 
+    				|| getPlayer(1).getHand().check(0).getKind()==Card.KIND.END) {
+    			getPlayer(0).getHand().clearHand();
+    			getPlayer(1).getHand().clearHand();
+    			System.out.println("デッキがなくなりました");
+				break;
+			}
+		}
+    	if (getPlayer(0).getHP()>getPlayer(1).getHP()) {
+    		getPlayer(0).getHand().add(new Card(0, Card.KIND.WIN, ""));
+    		getPlayer(1).getHand().add(new Card(0, Card.KIND.LOSE, ""));
+		}else if (getPlayer(0).getHP()<getPlayer(1).getHP()) {
+			getPlayer(0).getHand().add(new Card(0, Card.KIND.LOSE, ""));
+    		getPlayer(1).getHand().add(new Card(0, Card.KIND.WIN, ""));
+		}else {
+			getPlayer(0).getHand().add(new Card(0, Card.KIND.PEACE, ""));
+    		getPlayer(1).getHand().add(new Card(0, Card.KIND.PEACE, ""));
+		}
     }
 }
