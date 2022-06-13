@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 /**
  * このゲームのメインとなるクラス
+ * @author 北川奨真
  */
 public class Tuyu {
 	/*
@@ -139,18 +140,27 @@ public class Tuyu {
     	return decideDefenceCard(playerNum).getNum();
     }
     
+    /**
+     * player0の行動メソッド
+     */
     public void playerZeroAction() {
     	TuyuAction tuyuAction = new TuyuAction(decideAttackCard(0), decideDefenceCard(1), this);
     	tuyuAction.action(1);
     	
     }
     
+    /**
+     * player1の行動メソッド
+     */
     public void playerOneAction() {
     	TuyuAction tuyuAction = new TuyuAction(decideAttackCard(1), decideDefenceCard(0), this);
     	tuyuAction.action(0);
     	
     }
     
+    /**
+     * 試合を進行します
+     */
     public void actions() {
 		System.out.println("player0のHP: "+getPlayer(0).getHP());
 		System.out.println("player1のHP: "+getPlayer(1).getHP());
