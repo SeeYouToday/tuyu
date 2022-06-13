@@ -37,7 +37,6 @@ public class Player {
 
 	/**
 	 * hpのセッター
-	 * @param 現在の体力
 	 */
 	public void setHP(int hp) {
 		strategy.setHp(hp);
