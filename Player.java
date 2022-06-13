@@ -3,10 +3,9 @@
  */
 public class Player {
 	private int hp;
-	private int handMaisu;
+	private int maisuu;
 	private boolean isDefence;
 	private Hand hand;
-	private Deck deck;
 	private int pain;
 	private Strategy strategy;
 
@@ -19,34 +18,33 @@ public class Player {
 	 */
 
 	public Player(String strategyName) {
+		hand = new Hand();
 		this.strategy = setStrategy(strategyName);
-		this.hp = strategy.getterHp();
-		this.handMaisu = strategy.getterMaisuu();
 		this.isDefence = true;
-		/*
-		for (int i = 0; i < handMaisu; i++) {
-			hand.add(deck.draw());
-		}
-		*/
 	}
 
+	/**
+	 * 戦略のインスタンス化するセッター
+	 * @param strategyName 戦略の名前
+	 * @return インスタンスを返す
+	 */
 	public Strategy setStrategy(String strategyName) {
 		if (strategyName.equals(Strategy.STRATEGY.BOYSTRATEGY.name())) {
 			return new BoyStrategy();
 		} else if (strategyName.equals(Strategy.STRATEGY.GIRLSTRATEGY.name())) {
 			return new GirlStrategy();
 		}
-		System.out.println("いや");
+
 		return null;
 
 	}
 
 	/**
 	 * hpのセッター
-	 * @param hp
+	 * @param 現在の体力
 	 */
 	public void setHP(int hp) {
-		this.hp = hp;
+		strategy.setHp(hp);
 	}
 
 	/**
@@ -55,15 +53,18 @@ public class Player {
 	 *
 	 */
 	public int getHP() {
-		return hp;
+		return strategy.getHp();
 	}
 
+	public void setHand(Hand hand) {
+		this.hand = hand;
+	}
 	/**
-	 * handのセッター
-	 * @param handMaisu
+	 * maisuuのセッター
+	 * @param 現在の手札
 	 */
-	public void setHandMaisu(int handMaisu) {
-		this.handMaisu = handMaisu;
+	public void setMaisuu(int maisuu) {
+		strategy.setMaisu(maisuu);
 	}
 
 	/**
@@ -71,7 +72,7 @@ public class Player {
 	 * @return 現在の手札枚数
 	 */
 	public int getHandMaisu() {
-		return handMaisu;
+		return strategy.getMaisuu();
 	}
 
 	/**
@@ -99,14 +100,6 @@ public class Player {
 	}
 
 	/**
-	 * デッキを返すゲッター
-	 * @return デッキ
-	 */
-	public Deck getDeck() {
-		return deck;
-	}
-
-	/**
 	 * 相手からのダメージのセッター
 	 * @param pain 痛み
 	 */
@@ -120,5 +113,9 @@ public class Player {
 	 */
 	public int getPain() {
 		return pain;
+	}
+	
+	public Strategy getStrategy() {
+		return strategy;
 	}
 }
