@@ -15,6 +15,9 @@ import javax.swing.SwingConstants;
 
 public class JFrameSample extends JFrame implements ActionListener{
 
+	/*コンストラクタ
+	 * とりあえずここに全部書いてます
+	 * */
 	public JFrameSample(String title) {
 		setTitle(title);
 		//x,y,幅,高さ
@@ -22,15 +25,8 @@ public class JFrameSample extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel p = new JPanel();
-		//ここらへんでどういう配置にするかFlowかBoxか等々
-		//p.setLayout(new BoxLayout(p,BoxLayout.LINE_AXIS));
 
 		JPanel p2 = new JPanel();
-		//p.setLayout(new FlowLayout());
-		//JLabel label = new JLabel("SYTd 梅雨クエスト 現在の手札は100枚です。");
-		//label.setHorizontalAlignment(SwingConstants.BOTTOM);
-		/*JButton btn = new JButton("Push");
-		JButton btn2 = new JButton("Help");*/
 
 		/*セルらちゃん表示&処理*/
 		create("./png/SELRAisTHIS.png", "SELRA",p);
