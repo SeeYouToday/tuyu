@@ -12,8 +12,8 @@ public class Deck {
     	for(int i = 0; i < 3; i++){
             decks.add(new Card(10, Card.KIND.DEFENCE, "gandou"));
             decks.add(new Card(100000, Card.KIND.ATTACK, "uono"));
-            decks.add(new Card(0, Card.KIND.ATTACK, "a"));
-            decks.add(new Card(1, Card.KIND.ATTACK, "b"));
+            decks.add(new Card(1, Card.KIND.ATTACK, "ちくりんてぉ"));
+            decks.add(new Card(2, Card.KIND.DEFENCE, "カエルくん"));
             decks.add(new Card(2, Card.KIND.ATTACK, "c"));
             decks.add(new Card(3, Card.KIND.ATTACK, "d"));
             decks.add(new Card(4, Card.KIND.ATTACK, "e"));
