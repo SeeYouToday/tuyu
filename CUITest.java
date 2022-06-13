@@ -16,7 +16,10 @@ public class CUITest {
         printCard(tuyu, 1, 1);
 
         System.out.println(tuyu.getAttackCardName(1));
-
+        System.out.println(tuyu.getDefenceCardName(1));
+        
+        System.out.println(tuyu.getAttackCardPower(1));
+        System.out.println(tuyu.getDefenceCardPower(1));
 	}
 
 	private static void printCard(Tuyu tuyu, int playerNum, int cardNum) {

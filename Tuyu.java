@@ -83,7 +83,7 @@ public class Tuyu {
      * @return 攻撃で選ばれたCardオブジェクト
      */
     private Card decideAttackCard(int playerNum) {
-    	return players.get(playerNum).getHand().use(players.get(playerNum).getStrategy().decideAttack(players.get(playerNum)));
+    	return players.get(playerNum).getHand().check(players.get(playerNum).getStrategy().decideAttack(players.get(playerNum)));
     }
     
     /**
@@ -110,7 +110,7 @@ public class Tuyu {
      * @return 防御で選ばれたCardオブジェクト
      */
     private Card decideDefenceCard(int playerNum) {
-    	return players.get(playerNum).getHand().use(players.get(playerNum).getStrategy().decideDefence(players.get(playerNum)));
+    	return players.get(playerNum).getHand().check(players.get(playerNum).getStrategy().decideDefence(players.get(playerNum)));
     }
     
     /**
