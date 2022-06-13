@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.MediaTracker;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,103 +11,51 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class JFrameSample extends JFrame implements ActionListener{
 
+	/*コンストラクタ
+	 * とりあえずここに全部書いてます
+	 * */
 	public JFrameSample(String title) {
 		setTitle(title);
-		setBounds(1000, 1000, 1000, 1000);
+		//x,y,幅,高さ
+		setBounds(1000, 1000, 3000, 1000);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel p = new JPanel();
-		//ここらへんでどういう配置にするかFlowかBoxか等々
-		//p.setLayout(new BoxLayout(p,BoxLayout.LINE_AXIS));
 
 		JPanel p2 = new JPanel();
-		//p.setLayout(new FlowLayout());
-		//JLabel label = new JLabel("SYTd 梅雨クエスト 現在の手札は100枚です。");
-		//label.setHorizontalAlignment(SwingConstants.BOTTOM);
-		/*JButton btn = new JButton("Push");
-		JButton btn2 = new JButton("Help");*/
 
 		/*セルらちゃん表示&処理*/
-		/*ImageIcon icon = new ImageIcon("./png/SELRAisTHIS.png");
-		int iconHeight = icon.getIconHeight();
-		int iconWidth = icon.getIconWidth();
-		JButton selra = new JButton("SELRA");
-		selra.setPreferredSize(new Dimension(iconHeight,iconWidth));
-		selra.setIcon(icon);
-		selra.addActionListener(this);
-		selra.setActionCommand("SELRA");*/
 		create("./png/SELRAisTHIS.png", "SELRA",p);
 
 		/*syuya表示&処理*/
-		/*ImageIcon icon2 = new ImageIcon("./png/syuya.png");
-		int iconHeight2 = icon.getIconHeight();
-		int iconWidth2 = icon.getIconWidth();
-		JButton syuya = new JButton("おかだとしや");
-		syuya.setPreferredSize(new Dimension(iconHeight2,iconWidth2));
-		syuya.setIcon(icon2);
-		syuya.addActionListener(this);
-		syuya.setActionCommand("syuya");*/
-		create("./png/syuya.png", "syuya",p);
+		create("./png/syuya.png", "岡田としや",p);
 
 		/*ブルボン表示&処理*/
-		/*ImageIcon icon3 = new ImageIcon("./png/burubon.png");
-		int iconHeight3 = icon.getIconHeight();
-		int iconWidth3 = icon.getIconWidth();
-		JButton burubon = new JButton("burubon");
-		burubon.setPreferredSize(new Dimension(iconHeight3,iconWidth3));
-		burubon.setIcon(icon3);
-		burubon.addActionListener(this);
-		burubon.setActionCommand("burubon");*/
 		create("./png/burubon.png", "burubon",p);
 
-		/*混沌表示&処理*/
-		/*ImageIcon icon4 = new ImageIcon("./png/kame.png");
-		int iconHeight4 = icon.getIconHeight();
-		int iconWidth4 = icon.getIconWidth();
-		JButton lite = new JButton("混沌");
-		lite.setPreferredSize(new Dimension(iconHeight4,iconWidth4));
-		lite.setIcon(icon4);
-		lite.addActionListener(this);
-		lite.setActionCommand("混沌");*/
-		create("./png/kame.png", "混沌",p2);
-
-		/*ImageIcon icon5 = new ImageIcon("./png/kame2.png");
-		int iconHeight5 = icon.getIconHeight();
-		int iconWidth5= icon.getIconWidth();
-		JButton kame = new JButton("混沌2");
-		lite.setPreferredSize(new Dimension(iconHeight5,iconWidth5));
-		lite.setIcon(icon5);
-		lite.addActionListener(this);
-		lite.setActionCommand("混沌2");*/
-		create("./png/kame2.png", "混沌2",p2);
-
-		/*ImageIcon icon6 = new ImageIcon("./png/ninjin.png");
-		int iconHeight6 = icon.getIconHeight();
-		int iconWidth6 = icon.getIconWidth();
-		JButton ninjin = new JButton("混沌3");
-		lite.setPreferredSize(new Dimension(iconHeight6,iconWidth6));
-		lite.setIcon(icon6);
-		lite.addActionListener(this);
-		lite.setActionCommand("混沌3");*/
-		create("./png/ninjin.png", "混沌3",p2);
+		/*かめ表示&処理*/
+		create("./png/abareruhito.png", "混沌",p2);
+		/*かめ(二体目)追加*/
+		create("./png/turtle.png", "混沌2",p2);
+		/*人参追加*/
+		create("./png/carrot.png", "混沌3",p2);
+		/*gandou等を追加*/
+		create("./png/gandou.png", "gandou",p2);
+		create("./png/mentuyu.png", "mentuyu", p2);
+		create("./png/rainy.png", "雨", p2);
+		create("./png/kusokimosnail.png", "カタツムリ" ,p2);
+		create("./png/baiuzensen.png","梅雨前線", p2);
+		create("./png/kusokimofrog.png", "カエルDX", p2);
+		create("./png/tako.png", "タコ",p2);
 
 
 
 		//p.setFont(new Font(Font.MONOSPACED,Font.BOLD, 20));
 		//p.add(label);
-
-		//とりあえずJPnael pに追加
-	   /* p.add(syuya);
-	    p.add(selra);
-	    p.add(burubon);*/
-
-	    //もう一個のパネルp2に追加したい
-	    /*p2.add(lite);
-	    p2.add(kame);
-	    p2.add(ninjin);*/
 
 	    p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
 	    p2.setLayout(new BoxLayout(p2, BoxLayout.LINE_AXIS));
@@ -122,11 +71,19 @@ public class JFrameSample extends JFrame implements ActionListener{
 	/*画像付きボタンを生成そしてどのパネルに追加するかを指定*/
 	public void create(String fileName, String characterName, JPanel panel) {
 		ImageIcon icon = new ImageIcon(fileName);
-		int iconHeight = icon.getIconHeight();
-		int iconWidth = icon.getIconWidth();
 		JButton button = new JButton(characterName);
-		button.setPreferredSize(new Dimension(iconHeight, iconWidth));
-		button.setIcon(icon);
+		//画像の拡大処理
+		MediaTracker tracker = new MediaTracker(this);
+		Image smallImage = icon.getImage().getScaledInstance((int) (icon.getIconWidth() * 2),
+				                                              -1, Image.SCALE_SMOOTH);
+		tracker.addImage(smallImage, 1);
+		ImageIcon smallIcon = new ImageIcon(smallImage);
+
+		button.setIcon(smallIcon);
+		//水平方向を中央揃えで設定
+		button.setHorizontalTextPosition(JButton.CENTER);
+		//垂直方法を下部で設定
+		button.setVerticalTextPosition(SwingConstants.BOTTOM);
 		button.addActionListener(this);
 		button.setActionCommand(characterName);
 		panel.add(button);
@@ -135,34 +92,7 @@ public class JFrameSample extends JFrame implements ActionListener{
 
 	public static void main(String[] args) {
 		// TODO 自動生成されたメソッド・スタブ
-		//JFrame frame = new JFrame("つゆ クエスト");
 		JFrameSample jfs = new JFrameSample("SYTd 梅雨クエスト");
-		//画面デバイスを獲得
-		/*GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		GraphicsDevice gd = ge.getDefaultScreenDevice();
-		gd.setFullScreenWindow(jfs);*/
-	    //frame.setLayout(new FlowLayout());
-		//何かキーを押すと終了
-
-		/*JLabel label = new JLabel("SYTd 梅雨クエスト\n(何かキーを押すとプログラム終了!!)");
-		label.setFont(new Font(Font.MONOSPACED,Font.BOLD, 20));
-		frame.add(label);
-
-		/*JButton button1 = new JButton("ここを押せ");
-		button1.addActionListener(null);
-        frame.getContentPane().add(button1,BorderLayout.WEST);*/
-
-
-		/*JPanel p = new JPanel();
-		JButton btn1 = new JButton("Save");
-		JButton btn2 = new JButton("Cancel");
-		JButton btn3 = new JButton("Help");
-
-		p.add(btn1);
-		p.add(btn2);
-		p.add(btn3);
-
-		frame.getContentPane().add(p,BorderLayout.CENTER);*/
 		jfs.setVisible(true);
 
 
