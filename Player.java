@@ -2,11 +2,8 @@
  * プレーヤーの内部情報保持クラス
  */
 public class Player {
-	private int hp;
-	private int maisuu;
 	private boolean isDefence;
 	private Hand hand;
-	private Deck deck;
 	private int pain;
 	private Strategy strategy;
 
@@ -19,13 +16,9 @@ public class Player {
 	 */
 
 	public Player(String strategyName) {
+		hand = new Hand();
 		this.strategy = setStrategy(strategyName);
 		this.isDefence = true;
-		/*
-		for (int i = 0; i < handMaisu; i++) {
-			hand.add(deck.draw());
-		}
-		*/
 	}
 
 	/**
@@ -58,9 +51,12 @@ public class Player {
 	 *
 	 */
 	public int getHP() {
-		return strategy.getterHp();
+		return strategy.getHp();
 	}
 
+	public void setHand(Hand hand) {
+		this.hand = hand;
+	}
 	/**
 	 * maisuuのセッター
 	 * @param 現在の手札
@@ -74,7 +70,7 @@ public class Player {
 	 * @return 現在の手札枚数
 	 */
 	public int getHandMaisu() {
-		return strategy.getterMaisuu();
+		return strategy.getMaisuu();
 	}
 
 	/**
@@ -102,14 +98,6 @@ public class Player {
 	}
 
 	/**
-	 * デッキを返すゲッター
-	 * @return デッキ
-	 */
-	public Deck getDeck() {
-		return deck;
-	}
-
-	/**
 	 * 相手からのダメージのセッター
 	 * @param pain 痛み
 	 */
@@ -123,5 +111,9 @@ public class Player {
 	 */
 	public int getPain() {
 		return pain;
+	}
+	
+	public Strategy getStrategy() {
+		return strategy;
 	}
 }

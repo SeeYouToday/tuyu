@@ -13,7 +13,7 @@ public class GirlStrategy extends Strategy {
 	 * 選択基準は相手が前回防御カードを使用したか否か
 	 * @return 使用カードが手札の何番目にあるか
 	 */
-	public int decideAttack() {
+	public int decideAttack(Player player) {
 		int ret = 999;
 		Card max = null;
 		Card min = null;
@@ -47,7 +47,7 @@ public class GirlStrategy extends Strategy {
 			}
 		}
 		if (ret == 999) {
-			girl.getHand().add(girl.getDeck().draw());
+			girl.getHand().add(Deck.getInstance().draw());
 		}
 		return ret;
 	}
@@ -60,7 +60,7 @@ public class GirlStrategy extends Strategy {
 	 * 今回相手が選択した攻撃カードの攻撃力より小さい最大防御力または攻撃力より大きい最小防御力
 	 * @return 使用カードが手札の何番目にあるか
 	 */
-	public int decideDefence() {
+	public int decideDefence(Player player) {
 		int ret = 999;
 		Card max = null;
 		Card min = null;
@@ -116,20 +116,8 @@ public class GirlStrategy extends Strategy {
 			}
 		}
 		if (ret == 999) {
-			girl.getHand().add(girl.getDeck().draw());
+			girl.getHand().add(Deck.getInstance().draw());
 		}
 		return ret;
-	}
-
-	@Override
-	public int decideAttack(Player player) {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
-	}
-
-	@Override
-	public int decideDefence(Player player) {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
 	}
 }
