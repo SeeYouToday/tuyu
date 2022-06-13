@@ -32,9 +32,7 @@ public class Player {
 		} else if (strategyName.equals(Strategy.STRATEGY.GIRLSTRATEGY.name())) {
 			return new GirlStrategy();
 		}
-
 		return null;
-
 	}
 
 	/**
@@ -54,6 +52,10 @@ public class Player {
 		return strategy.getHp();
 	}
 
+	/**
+	 * 手札のセッター
+	 * @param hand
+	 */
 	public void setHand(Hand hand) {
 		this.hand = hand;
 	}
@@ -112,7 +114,10 @@ public class Player {
 	public int getPain() {
 		return pain;
 	}
-	
+	/**
+	 * ストラテジーのゲッター
+	 * @return 戦略
+	 */
 	public Strategy getStrategy() {
 		return strategy;
 	}

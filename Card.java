@@ -37,6 +37,10 @@ public class Card{
         return kind;
     }
 
+    /**
+     * カードの名前のゲッター
+     * @return カード名
+     */
     public String getName(){
         return name;
     }
