@@ -11,6 +11,8 @@ public class BoyStrategy extends Strategy {
 	 *
 	 * 選択基準は自身の手札枚数
 	 * 最大火力を出すか最小火力を出すの二択
+	 * 
+	 * 手札に使用可能なカードがない場合は何も行わない
 	 * @return 使用カードが手札の何番目にあるか
 	 */
 	public int decideAttack(Player boy) {
@@ -59,6 +61,8 @@ public class BoyStrategy extends Strategy {
 	 *
 	 * 選択基準は自身の体力
 	 * 今回相手が選択した攻撃カードの攻撃力より小さい最大防御力または攻撃力より大きい最小防御力
+	 * 
+	 * 手札に使用可能なカードがない場合は何も行わない
 	 * @return 使用カードが手札の何番目にあるか
 	 */
 	public int decideDefence(Player boy) {

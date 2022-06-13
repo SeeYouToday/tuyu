@@ -14,6 +14,11 @@ public abstract class Strategy {
 		}
 	}
 
+	/**
+	 * ストラテジーのセッター
+	 * @param strategy
+	 * @return 引数に応じたストラテジークラス
+	 */
 	public Strategy setStrategy(STRATEGY strategy) {
 		if (strategy == STRATEGY.BOYSTRATEGY) {
 			return new BoyStrategy();
