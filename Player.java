@@ -2,8 +2,6 @@
  * プレーヤーの内部情報保持クラス
  */
 public class Player {
-	private int hp;
-	private int maisuu;
 	private boolean isDefence;
 	private Hand hand;
 	private int pain;
