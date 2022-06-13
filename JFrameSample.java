@@ -30,62 +30,68 @@ public class JFrameSample extends JFrame implements ActionListener{
 		JButton btn2 = new JButton("Help");*/
 
 		/*セルらちゃん表示&処理*/
-		ImageIcon icon = new ImageIcon("./png/SELRAisTHIS.png");
+		/*ImageIcon icon = new ImageIcon("./png/SELRAisTHIS.png");
 		int iconHeight = icon.getIconHeight();
 		int iconWidth = icon.getIconWidth();
 		JButton selra = new JButton("SELRA");
 		selra.setPreferredSize(new Dimension(iconHeight,iconWidth));
 		selra.setIcon(icon);
 		selra.addActionListener(this);
-		selra.setActionCommand("SELRA");
+		selra.setActionCommand("SELRA");*/
+		create("./png/SELRAisTHIS.png", "SELRA",p);
 
 		/*syuya表示&処理*/
-		ImageIcon icon2 = new ImageIcon("./png/syuya.png");
+		/*ImageIcon icon2 = new ImageIcon("./png/syuya.png");
 		int iconHeight2 = icon.getIconHeight();
 		int iconWidth2 = icon.getIconWidth();
 		JButton syuya = new JButton("おかだとしや");
 		syuya.setPreferredSize(new Dimension(iconHeight2,iconWidth2));
 		syuya.setIcon(icon2);
 		syuya.addActionListener(this);
-		syuya.setActionCommand("syuya");
+		syuya.setActionCommand("syuya");*/
+		create("./png/syuya.png", "syuya",p);
 
 		/*ブルボン表示&処理*/
-		ImageIcon icon3 = new ImageIcon("./png/burubon.png");
+		/*ImageIcon icon3 = new ImageIcon("./png/burubon.png");
 		int iconHeight3 = icon.getIconHeight();
 		int iconWidth3 = icon.getIconWidth();
 		JButton burubon = new JButton("burubon");
 		burubon.setPreferredSize(new Dimension(iconHeight3,iconWidth3));
 		burubon.setIcon(icon3);
 		burubon.addActionListener(this);
-		burubon.setActionCommand("burubon");
+		burubon.setActionCommand("burubon");*/
+		create("./png/burubon.png", "burubon",p);
 
 		/*混沌表示&処理*/
-		ImageIcon icon4 = new ImageIcon("./png/kame.png");
+		/*ImageIcon icon4 = new ImageIcon("./png/kame.png");
 		int iconHeight4 = icon.getIconHeight();
 		int iconWidth4 = icon.getIconWidth();
 		JButton lite = new JButton("混沌");
 		lite.setPreferredSize(new Dimension(iconHeight4,iconWidth4));
 		lite.setIcon(icon4);
 		lite.addActionListener(this);
-		lite.setActionCommand("混沌");
+		lite.setActionCommand("混沌");*/
+		create("./png/kame.png", "混沌",p2);
 
-		ImageIcon icon5 = new ImageIcon("./png/kame2.png");
+		/*ImageIcon icon5 = new ImageIcon("./png/kame2.png");
 		int iconHeight5 = icon.getIconHeight();
 		int iconWidth5= icon.getIconWidth();
 		JButton kame = new JButton("混沌2");
 		lite.setPreferredSize(new Dimension(iconHeight5,iconWidth5));
 		lite.setIcon(icon5);
 		lite.addActionListener(this);
-		lite.setActionCommand("混沌2");
+		lite.setActionCommand("混沌2");*/
+		create("./png/kame2.png", "混沌2",p2);
 
-		ImageIcon icon6 = new ImageIcon("./png/ninjin.png");
+		/*ImageIcon icon6 = new ImageIcon("./png/ninjin.png");
 		int iconHeight6 = icon.getIconHeight();
 		int iconWidth6 = icon.getIconWidth();
 		JButton ninjin = new JButton("混沌3");
 		lite.setPreferredSize(new Dimension(iconHeight6,iconWidth6));
 		lite.setIcon(icon6);
 		lite.addActionListener(this);
-		lite.setActionCommand("混沌3");
+		lite.setActionCommand("混沌3");*/
+		create("./png/ninjin.png", "混沌3",p2);
 
 
 
@@ -93,14 +99,14 @@ public class JFrameSample extends JFrame implements ActionListener{
 		//p.add(label);
 
 		//とりあえずJPnael pに追加
-	    p.add(syuya);
+	   /* p.add(syuya);
 	    p.add(selra);
-	    p.add(burubon);
+	    p.add(burubon);*/
 
-	    //もう一個のパネルに追加したい
-	    p2.add(lite);
+	    //もう一個のパネルp2に追加したい
+	    /*p2.add(lite);
 	    p2.add(kame);
-	    p2.add(ninjin);
+	    p2.add(ninjin);*/
 
 	    p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
 	    p2.setLayout(new BoxLayout(p2, BoxLayout.LINE_AXIS));
@@ -112,6 +118,20 @@ public class JFrameSample extends JFrame implements ActionListener{
 	    getContentPane().add(p2, BorderLayout.NORTH);
 
 	  }
+
+	/*画像付きボタンを生成そしてどのパネルに追加するかを指定*/
+	public void create(String fileName, String characterName, JPanel panel) {
+		ImageIcon icon = new ImageIcon(fileName);
+		int iconHeight = icon.getIconHeight();
+		int iconWidth = icon.getIconWidth();
+		JButton button = new JButton(characterName);
+		button.setPreferredSize(new Dimension(iconHeight, iconWidth));
+		button.setIcon(icon);
+		button.addActionListener(this);
+		button.setActionCommand(characterName);
+		panel.add(button);
+
+	}
 
 	public static void main(String[] args) {
 		// TODO 自動生成されたメソッド・スタブ
