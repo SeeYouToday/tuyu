@@ -11,7 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 //import java.awt.*;
-
+/**
+ * 対戦相手を選択するためのウィンドウを生成するGUIクラス
+ */
 public class TitleGUI extends JFrame implements ActionListener {
 	private static String title = "Tuyu Field";
 	private Tuyu tuyu;

@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
-
+/**
+ * デッキを表すクラス
+ */
 public class Deck {
 
     private static Deck deck = new Deck();
