@@ -30,6 +30,7 @@ public class Deck {
 
     /**
      * デッキの内容をシャッフルするよ
+     * よーくシャッフルするよ
      */
     public void shuffle(){
         for(int i = 0; i < decks.size(); i++){
@@ -43,20 +44,29 @@ public class Deck {
     }
 
     /**
-     * デッキのトップから一枚ひくyp
-     * @return
+     * デッキのトップから一枚ひくyo
+     * もしデッキが0になったら終わりを表すエンドカードを返す
+     * @return デッキトップのカード
      */
     public Card draw(){
     	if (zeroCheck()) {
 			return new Card(0, Card.KIND.END, "end");
 		}
         return decks.remove(0);
-       }
+    }
 
+    /**
+     * デッキのゲッター
+     * @return デッキ
+     */
     public ArrayList<Card> getDeck(){
         return decks;
     }
     
+    /**
+     * デッキがまだあるかチェック
+     * @return デッキがまだあるかの真偽値
+     */
     private boolean zeroCheck() {
     	boolean result = false;
     	if (getInstance().decks.size() <= 0) {
