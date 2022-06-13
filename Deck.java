@@ -22,7 +22,7 @@ public class Deck {
             decks.add(new Card(5, Card.KIND.ATTACK, "雨の雰囲気のある葉"));
         }
         shuffle();
-    	}
+    }
     
     public static Deck getInstance() {
 		return deck;
@@ -47,10 +47,21 @@ public class Deck {
      * @return
      */
     public Card draw(){
+    	if (zeroCheck()) {
+			return new Card(0, Card.KIND.END, "end");
+		}
         return decks.remove(0);
-    }
+       }
 
     public ArrayList<Card> getDeck(){
         return decks;
+    }
+    
+    private boolean zeroCheck() {
+    	boolean result = false;
+    	if (getInstance().decks.size() <= 0) {
+			result = true;
+		}
+    	return result;
     }
 }

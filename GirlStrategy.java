@@ -35,14 +35,14 @@ public class GirlStrategy extends Strategy {
 						ret = i;
 					}
 				}
-			}
-		} else {
+			} else {
 			for (int i = 0; i < girl.getHandMaisu(); i++) {
 				tmp = girl.getHand().check(i);
 				if (min.getNum() > tmp.getNum()) {
 					min = tmp;
 					ret = i;
 				}
+			}
 			}
 		}
 		if (ret == -1) {
