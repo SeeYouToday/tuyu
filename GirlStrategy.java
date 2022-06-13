@@ -47,7 +47,7 @@ public class GirlStrategy extends Strategy {
 			}
 		}
 		if (ret == 999) {
-			girl.getHand().add(girl.getDeck().draw());
+			girl.getHand().add(Deck.getInstance().draw());
 		}
 		return ret;
 	}
@@ -116,7 +116,7 @@ public class GirlStrategy extends Strategy {
 			}
 		}
 		if (ret == 999) {
-			girl.getHand().add(girl.getDeck().draw());
+			girl.getHand().add(Deck.getInstance().draw());
 		}
 		return ret;
 	}
