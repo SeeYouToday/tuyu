@@ -35,8 +35,7 @@ public class GirlStrategy extends Strategy {
 						ret = i;
 					}
 				}
-			}
-		} else {
+			} else {
 			for (int i = 0; i < girl.getHandMaisu(); i++) {
 				tmp = girl.getHand().check(i);
 				if (min.getNum() > tmp.getNum()) {
@@ -44,8 +43,9 @@ public class GirlStrategy extends Strategy {
 					ret = i;
 				}
 			}
+			}
 		}
-		if (ret == 999) {
+		if (ret == -1) {
 			girl.getHand().add(Deck.getInstance().draw());
 		}
 		return ret;
@@ -114,7 +114,7 @@ public class GirlStrategy extends Strategy {
 				}
 			}
 		}
-		if (ret == 999) {
+		if (ret == -1) {
 			girl.getHand().add(Deck.getInstance().draw());
 		}
 		return ret;

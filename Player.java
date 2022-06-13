@@ -107,7 +107,7 @@ public class Player {
 
 	/**
 	 * 痛みを返す
-	 * @return　相手の攻撃力
+	 * @return 相手の攻撃力
 	 */
 	public int getPain() {
 		return pain;

@@ -11,7 +11,7 @@ public class Deck {
     private Deck(){
     	for(int i = 0; i < 3; i++){
             decks.add(new Card(10, Card.KIND.DEFENCE, "gandou"));
-            decks.add(new Card(100000, Card.KIND.ATTACK, "uono"));
+//            decks.add(new Card(100000, Card.KIND.ATTACK, "uono"));
             decks.add(new Card(1, Card.KIND.ATTACK, "ちくりんてぉ"));
             decks.add(new Card(2, Card.KIND.DEFENCE, "カエルくん"));
             decks.add(new Card(2, Card.KIND.ATTACK, "c"));
@@ -20,9 +20,9 @@ public class Deck {
             decks.add(new Card(5, Card.KIND.ATTACK, "f"));
             decks.add(new Card(6, Card.KIND.ATTACK, "g"));
             decks.add(new Card(7, Card.KIND.ATTACK, "h"));
-        }
-        shuffle();
     	}
+        shuffle();
+    }
     
     public static Deck getInstance() {
 		return deck;
@@ -34,11 +34,11 @@ public class Deck {
     public void shuffle(){
         for(int i = 0; i < decks.size(); i++){
             int shu = rand.nextInt(decks.size());
-            decks.add(decks.remove(shu-1));
+            decks.add(decks.remove(shu));
         }
         for(int i = 0; i < decks.size(); i++){
             int shu = rand.nextInt(decks.size());
-            decks.add(decks.remove(shu-1));
+            decks.add(decks.remove(shu));
         }
     }
 
@@ -47,10 +47,21 @@ public class Deck {
      * @return
      */
     public Card draw(){
+    	if (zeroCheck()) {
+			return new Card(0, Card.KIND.END, "end");
+		}
         return decks.remove(0);
-    }
+       }
 
     public ArrayList<Card> getDeck(){
         return decks;
+    }
+    
+    private boolean zeroCheck() {
+    	boolean result = false;
+    	if (getInstance().decks.size() <= 0) {
+			result = true;
+		}
+    	return result;
     }
 }

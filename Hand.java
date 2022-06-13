@@ -20,6 +20,9 @@ public class Hand {
         }
     }
 
+    public void clearHand() {
+    	hands.clear();
+    }
     /**
      * 引数で指定した場所にあるカードを使用するよ
      * と言っても手札から消すだけだから使用処理に関しては任した！
@@ -29,21 +32,8 @@ public class Hand {
     public Card use(int i){
         if(i == -1){
             Card token = new Card(0, Card.KIND.TOKEN, "何もできないお！");
-
             return token;
-        }else{
-            Card.KIND kind = this.hands.get(i).getKind();
-            switch(kind){
-                case ATTACK:
-                //ここにでも攻撃カードの処理を書いてくれるとスムーズに繋がる予定してる．
-                break;
-                case DEFENCE:
-                //ここの防御のカードの処理を書くとうまくいく．保証はしない．
-                break;
-                case HEAL:
-                //吾輩はヒールである．実装はまだない．
-                break;
-            }
+        }else {
             return this.hands.remove(i);
         }
         
@@ -56,6 +46,11 @@ public class Hand {
      * @return 指定した手札位置のカード
      */
     public Card check(int i){
-        return this.hands.get(i);
+        if(i == -1){
+            Card token = new Card(0, Card.KIND.TOKEN, "何もできないお！");
+            return token;
+        }else {
+        	return this.hands.get(i);
+        }
     }
 }
