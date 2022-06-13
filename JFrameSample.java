@@ -80,13 +80,13 @@ public class JFrameSample extends JFrame implements ActionListener{
 	    p.add(selra);
 	    p.add(burubon);
 
+	    //もう一個のパネルに追加したい
 	    p2.add(lite);
-	    //テスト
-	    //p2.add(lite);
-	    p.setLayout(new BoxLayout(p,BoxLayout.LINE_AXIS));
+	    p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
+	   // p2.setLayout(new BorderLayout());
 
 	    getContentPane().add(p, BorderLayout.CENTER);
-	    //getContentPane().add(p2,BorderLayout.NORTH);
+	    getContentPane().add(p2, BorderLayout.NORTH);
 	    //p.setLayout(new BoxLayout(p,BoxLayout.LINE_AXIS));
 
 	  }
