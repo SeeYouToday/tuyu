@@ -143,7 +143,7 @@ public class Tuyu {
     /**
      * player0の行動メソッド
      */
-    public void playerZeroAction() {
+    private void playerZeroAction() {
     	TuyuAction tuyuAction = new TuyuAction(decideAttackCard(0), decideDefenceCard(1), this);
     	tuyuAction.action(1);
     	
@@ -152,7 +152,7 @@ public class Tuyu {
     /**
      * player1の行動メソッド
      */
-    public void playerOneAction() {
+    private void playerOneAction() {
     	TuyuAction tuyuAction = new TuyuAction(decideAttackCard(1), decideDefenceCard(0), this);
     	tuyuAction.action(0);
     	
