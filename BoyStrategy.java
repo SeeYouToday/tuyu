@@ -14,7 +14,7 @@ public class BoyStrategy extends Strategy {
 	 * @return 使用カードが手札の何番目にあるか
 	 */
 	public int decideAttack(Player boy) {
-		int ret = 999;
+		int ret = -1;
 		Card max = null;
 		Card min = null;
 		Card tmp;
@@ -62,7 +62,7 @@ public class BoyStrategy extends Strategy {
 	 * @return 使用カードが手札の何番目にあるか
 	 */
 	public int decideDefence(Player boy) {
-		int ret = 999;
+		int ret = -1;
 		Card max = null;
 		Card min = null;
 		Card tmp;

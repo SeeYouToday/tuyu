@@ -27,7 +27,26 @@ public class Hand {
      * @return 指定した手札位置のカード
      */
     public Card use(int i){
-        return this.hands.remove(i);
+        if(i == -1){
+            Card token = new Card(0, Card.KIND.TOKEN, "何もできないお！");
+
+            return token;
+        }else{
+            Card.KIND kind = this.hands.get(i).getKind();
+            switch(kind){
+                case ATTACK:
+                //ここにでも攻撃カードの処理を書いてくれるとスムーズに繋がる予定してる．
+                break;
+                case DEFENCE:
+                //ここの防御のカードの処理を書くとうまくいく．保証はしない．
+                break;
+                case HEAL:
+                //吾輩はヒールである．実装はまだない．
+                break;
+            }
+            return this.hands.remove(i);
+        }
+        
     }
 
     /**

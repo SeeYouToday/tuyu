@@ -1,5 +1,4 @@
 public class GirlStrategy extends Strategy {
-	private Player girl;
 
 	public GirlStrategy() {
 		hp = 30;
@@ -14,7 +13,7 @@ public class GirlStrategy extends Strategy {
 	 * @return 使用カードが手札の何番目にあるか
 	 */
 	public int decideAttack(Player girl) {
-		int ret = 999;
+		int ret = -1;
 		Card max = null;
 		Card min = null;
 		Card tmp;
@@ -61,7 +60,7 @@ public class GirlStrategy extends Strategy {
 	 * @return 使用カードが手札の何番目にあるか
 	 */
 	public int decideDefence(Player girl) {
-		int ret = 999;
+		int ret = -1;
 		Card max = null;
 		Card min = null;
 		Card tmp;
