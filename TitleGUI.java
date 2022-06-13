@@ -1,21 +1,27 @@
-import java.awt.BorderLayout;
-
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 //import java.awt.*;
 
-public class TitleGUI extends JFrame{
+public class TitleGUI extends JFrame implements ActionListener{
     private static String title = "Tuyu Field";
-    public TitleGUI(){
+    JButton boyButton;
+    JButton girlButton;
 
+    public TitleGUI(){
     }
+
     public void createTitle(){
         JFrame frame = createFrame(title);
         JPanel panelUe = createPanel();
         JPanel panelNaka = createPanel();
         JLabel label = createLabel("対戦相手を選んでね");
-        JButton boyButton = createButton("男の子");
-        JButton girlButton = createButton("女の子");
-        //Container container = getContentPane();
+        ImageIcon iconBoy = new ImageIcon(); //ここに男の子のアイコンのパスを
+        ImageIcon iconGirl = new ImageIcon(); //ここの女の子のアイコンのパスを
+        boyButton = createButton(iconBoy);
+        boyButton.addActionListener(this);
+        girlButton = createButton(iconGirl);
+        girlButton.addActionListener(this);
         panelUe.add(label);
         frame.add(panelUe, BorderLayout.NORTH);
         panelNaka.add(boyButton);
@@ -35,16 +41,27 @@ public class TitleGUI extends JFrame{
         return new JPanel();
     }
 
-    private JButton createButton(String name){
-        return new JButton(name);
+    private JButton createButton(Icon icon){
+        return new JButton(icon);
     }
 
-    private JLabel createLabel(String label){
-        return new JLabel(label);
+    private JLabel createLabel(String labelName){
+        JLabel label = new JLabel(labelName);
+        label.setPreferredSize(new Dimension(200, 100));
+        return label;
     }
 
     public static void main(String[] args){
         TitleGUI titleGUI = new TitleGUI();
         titleGUI.createTitle();
+    }
+
+    public void actionPerformed(ActionEvent event){
+        if(event.getSource() == boyButton){
+            //ここにすとらてじいいいいいいを
+        }
+        if(event.getSource() == girlButton){
+            //生成して欲しいねんけどわからんち
+        }
     }
 }
