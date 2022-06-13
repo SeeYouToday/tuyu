@@ -1,3 +1,4 @@
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -76,4 +77,5 @@ public class TitleGUI extends JFrame implements ActionListener {
 			tuyu.addPlayer(Strategy.STRATEGY.GIRLSTRATEGY.name());
 		}
 	}
+
 }

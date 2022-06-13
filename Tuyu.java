@@ -8,7 +8,7 @@ public class Tuyu {
 	 * player: ゲームを行うプレイヤーのリスト
 	 * deck: シングルトンパターンであるDeckクラスの参照型変数
 	 */
-	private ArrayList<Player> players;
+	protected ArrayList<Player> players;
 	Deck deck = Deck.getInstance();
 
 	/**
@@ -77,8 +77,57 @@ public class Tuyu {
 		return getCard(playerNum, cardNum).getKind();
 	}
 
-    public int decideAttack(int playerNum) {
-    	return players.get(playerNum).getStrategy().decideAttack(players.get(playerNum));
+    /**
+     * 下記のメソッドで使うプレイヤーの攻撃カードを選ぶ
+     * @param playerNum プレイヤー（はじめの人が0）
+     * @return 攻撃で選ばれたCardオブジェクト
+     */
+    private Card decideAttackCard(int playerNum) {
+    	return players.get(playerNum).getHand().check(players.get(playerNum).getStrategy().decideAttack(players.get(playerNum)));
+    }
+    
+    /**
+     * 攻撃カードの名前を返す
+     * @param playerNum プレイヤー（はじめの人が0）
+     * @return 攻撃カードの名前
+     */
+    public String getAttackCardName(int playerNum) {
+    	return decideAttackCard(playerNum).getName();
     }
 
+    /**
+     * 攻撃カードの攻撃力を返す
+     * @param playerNum プレイヤー（はじめの人が0）
+     * @return 攻撃カードの攻撃力
+     */
+    public int getAttackCardPower(int playerNum) {
+    	return decideAttackCard(playerNum).getNum();
+    }
+
+    /**
+     * 下記のメソッドで使うプレイヤーの防御カードを選ぶ
+     * @param playerNum プレイヤー（はじめの人が0）
+     * @return 防御で選ばれたCardオブジェクト
+     */
+    private Card decideDefenceCard(int playerNum) {
+    	return players.get(playerNum).getHand().check(players.get(playerNum).getStrategy().decideDefence(players.get(playerNum)));
+    }
+    
+    /**
+     * 防御カードの名前を返す
+     * @param playerNum プレイヤー（はじめの人が0）
+     * @return 防御カードの名前
+     */
+    public String getDefenceCardName(int playerNum) {
+    	return decideDefenceCard(playerNum).getName();
+    }
+
+    /**
+     * 防御カードの防御力を返す
+     * @param playerNum プレイヤー（はじめの人が0）
+     * @return 防御カードの防御力
+     */
+    public int getDefenceCardPower(int playerNum) {
+    	return decideDefenceCard(playerNum).getNum();
+    }
 }
