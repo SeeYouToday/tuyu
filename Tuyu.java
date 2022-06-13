@@ -8,7 +8,7 @@ public class Tuyu {
 	 * player: ゲームを行うプレイヤーのリスト
 	 * deck: シングルトンパターンであるDeckクラスの参照型変数
 	 */
-	private ArrayList<Player> player;
+	private ArrayList<Player> players;
 	Deck deck = Deck.getInstance();
 
 	/**
@@ -16,7 +16,7 @@ public class Tuyu {
 	 * playerのArrayList作成
 	 */
     public Tuyu(){
-        player = new ArrayList<>();
+        players = new ArrayList<>();
     }
 
     /**
@@ -24,14 +24,14 @@ public class Tuyu {
      * @param strategy プレイヤーの戦略名
      */
     public void addPlayer(String strategy){
-        player.add(new Player(strategy));
+        players.add(new Player(strategy));
     }
 
     /**
      * 最初の手札を割り振る
      */
     public void makePlayerHand() {
-    	for (Player player : player) {
+    	for (Player player : players) {
     		int max = player.getStrategy().getMaisuu();
     		for (int i = 0; i < max; i++) {
     			player.getHand().add(deck.draw());
@@ -44,7 +44,7 @@ public class Tuyu {
      * @param playerNum プレイヤー（はじめの人が0）
      */
     private Card getCard(int playerNum, int cardNum) {
-		return player.get(playerNum).getHand().check(cardNum);
+		return players.get(playerNum).getHand().check(cardNum);
 	}
 
     /**
@@ -76,5 +76,9 @@ public class Tuyu {
     public Card.KIND getCardKind(int playerNum, int cardNum) {
 		return getCard(playerNum, cardNum).getKind();
 	}
+
+    public int decideAttack(int playerNum) {
+    	return players.get(playerNum).getStrategy().decideAttack(players.get(playerNum));
+    }
 
 }
