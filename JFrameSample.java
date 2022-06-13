@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,7 +22,7 @@ public class JFrameSample extends JFrame implements ActionListener{
 		//ここらへんでどういう配置にするかFlowかBoxか等々
 		//p.setLayout(new BoxLayout(p,BoxLayout.LINE_AXIS));
 
-		JPanel p2 = new JPanel(new FlowLayout());
+		JPanel p2 = new JPanel();
 		//p.setLayout(new FlowLayout());
 		//JLabel label = new JLabel("SYTd 梅雨クエスト 現在の手札は100枚です。");
 		//label.setHorizontalAlignment(SwingConstants.BOTTOM);
@@ -61,7 +60,7 @@ public class JFrameSample extends JFrame implements ActionListener{
 		burubon.setActionCommand("burubon");
 
 		/*混沌表示&処理*/
-		ImageIcon icon4 = new ImageIcon("./png/混沌.png");
+		ImageIcon icon4 = new ImageIcon("./png/kame.png");
 		int iconHeight4 = icon.getIconHeight();
 		int iconWidth4 = icon.getIconWidth();
 		JButton lite = new JButton("混沌");
@@ -69,6 +68,24 @@ public class JFrameSample extends JFrame implements ActionListener{
 		lite.setIcon(icon4);
 		lite.addActionListener(this);
 		lite.setActionCommand("混沌");
+
+		ImageIcon icon5 = new ImageIcon("./png/kame2.png");
+		int iconHeight5 = icon.getIconHeight();
+		int iconWidth5= icon.getIconWidth();
+		JButton kame = new JButton("混沌2");
+		lite.setPreferredSize(new Dimension(iconHeight5,iconWidth5));
+		lite.setIcon(icon5);
+		lite.addActionListener(this);
+		lite.setActionCommand("混沌2");
+
+		ImageIcon icon6 = new ImageIcon("./png/ninjin.png");
+		int iconHeight6 = icon.getIconHeight();
+		int iconWidth6 = icon.getIconWidth();
+		JButton ninjin = new JButton("混沌3");
+		lite.setPreferredSize(new Dimension(iconHeight6,iconWidth6));
+		lite.setIcon(icon6);
+		lite.addActionListener(this);
+		lite.setActionCommand("混沌3");
 
 
 
@@ -82,12 +99,17 @@ public class JFrameSample extends JFrame implements ActionListener{
 
 	    //もう一個のパネルに追加したい
 	    p2.add(lite);
-	    p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
-	   // p2.setLayout(new BorderLayout());
+	    p2.add(kame);
+	    p2.add(ninjin);
 
-	    getContentPane().add(p, BorderLayout.CENTER);
+	    p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
+	    p2.setLayout(new BoxLayout(p2, BoxLayout.LINE_AXIS));
+
+
+	    //自分のカード
+	    getContentPane().add(p, BorderLayout.SOUTH);
+	    //相手のカード
 	    getContentPane().add(p2, BorderLayout.NORTH);
-	    //p.setLayout(new BoxLayout(p,BoxLayout.LINE_AXIS));
 
 	  }
 
