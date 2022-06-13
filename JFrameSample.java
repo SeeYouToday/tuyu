@@ -21,16 +21,17 @@ public class JFrameSample extends JFrame implements ActionListener{
 
 		JPanel p = new JPanel();
 		//ここらへんでどういう配置にするかFlowかBoxか等々
-		p.setLayout(new BoxLayout(p,BoxLayout.LINE_AXIS));
+		//p.setLayout(new BoxLayout(p,BoxLayout.LINE_AXIS));
 
-		JPanel p2 = new JPanel();
-		p2.setLayout(new FlowLayout());
-		//JLabel label = new JLabel("SYTd 梅雨クエスト\n(何かキーを押すとプログラム終了!!)");
+		JPanel p2 = new JPanel(new FlowLayout());
+		//p.setLayout(new FlowLayout());
+		//JLabel label = new JLabel("SYTd 梅雨クエスト 現在の手札は100枚です。");
+		//label.setHorizontalAlignment(SwingConstants.BOTTOM);
 		/*JButton btn = new JButton("Push");
 		JButton btn2 = new JButton("Help");*/
 
 		/*セルらちゃん表示&処理*/
-		ImageIcon icon = new ImageIcon("SELRAisTHIS.png");
+		ImageIcon icon = new ImageIcon("./png/SELRAisTHIS.png");
 		int iconHeight = icon.getIconHeight();
 		int iconWidth = icon.getIconWidth();
 		JButton selra = new JButton("SELRA");
@@ -40,7 +41,7 @@ public class JFrameSample extends JFrame implements ActionListener{
 		selra.setActionCommand("SELRA");
 
 		/*syuya表示&処理*/
-		ImageIcon icon2 = new ImageIcon("syuya.png");
+		ImageIcon icon2 = new ImageIcon("./png/syuya.png");
 		int iconHeight2 = icon.getIconHeight();
 		int iconWidth2 = icon.getIconWidth();
 		JButton syuya = new JButton("おかだとしや");
@@ -49,7 +50,8 @@ public class JFrameSample extends JFrame implements ActionListener{
 		syuya.addActionListener(this);
 		syuya.setActionCommand("syuya");
 
-		ImageIcon icon3 = new ImageIcon("burubon.png");
+		/*ブルボン表示&処理*/
+		ImageIcon icon3 = new ImageIcon("./png/burubon.png");
 		int iconHeight3 = icon.getIconHeight();
 		int iconWidth3 = icon.getIconWidth();
 		JButton burubon = new JButton("burubon");
@@ -57,6 +59,16 @@ public class JFrameSample extends JFrame implements ActionListener{
 		burubon.setIcon(icon3);
 		burubon.addActionListener(this);
 		burubon.setActionCommand("burubon");
+
+		/*混沌表示&処理*/
+		ImageIcon icon4 = new ImageIcon("./png/混沌.png");
+		int iconHeight4 = icon.getIconHeight();
+		int iconWidth4 = icon.getIconWidth();
+		JButton lite = new JButton("混沌");
+		lite.setPreferredSize(new Dimension(iconHeight4,iconWidth4));
+		lite.setIcon(icon4);
+		lite.addActionListener(this);
+		lite.setActionCommand("混沌");
 
 
 
@@ -67,9 +79,15 @@ public class JFrameSample extends JFrame implements ActionListener{
 	    p.add(syuya);
 	    p.add(selra);
 	    p.add(burubon);
+
+	    p2.add(lite);
 	    //テスト
-	    //p2.add(selra);
+	    //p2.add(lite);
+	    p.setLayout(new BoxLayout(p,BoxLayout.LINE_AXIS));
+
 	    getContentPane().add(p, BorderLayout.CENTER);
+	    //getContentPane().add(p2,BorderLayout.NORTH);
+	    //p.setLayout(new BoxLayout(p,BoxLayout.LINE_AXIS));
 
 	  }
 
