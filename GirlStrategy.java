@@ -1,5 +1,4 @@
 public class GirlStrategy extends Strategy {
-	private Player girl;
 
 	public GirlStrategy() {
 		hp = 30;
@@ -13,8 +12,8 @@ public class GirlStrategy extends Strategy {
 	 * 選択基準は相手が前回防御カードを使用したか否か
 	 * @return 使用カードが手札の何番目にあるか
 	 */
-	public int decideAttack(Player player) {
-		int ret = 999;
+	public int decideAttack(Player girl) {
+		int ret = -1;
 		Card max = null;
 		Card min = null;
 		Card tmp;
@@ -60,8 +59,8 @@ public class GirlStrategy extends Strategy {
 	 * 今回相手が選択した攻撃カードの攻撃力より小さい最大防御力または攻撃力より大きい最小防御力
 	 * @return 使用カードが手札の何番目にあるか
 	 */
-	public int decideDefence(Player player) {
-		int ret = 999;
+	public int decideDefence(Player girl) {
+		int ret = -1;
 		Card max = null;
 		Card min = null;
 		Card tmp;

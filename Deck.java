@@ -12,8 +12,8 @@ public class Deck {
     	for(int i = 0; i < 3; i++){
             decks.add(new Card(10, Card.KIND.DEFENCE, "gandou"));
             decks.add(new Card(100000, Card.KIND.ATTACK, "uono"));
-            decks.add(new Card(0, Card.KIND.ATTACK, "a"));
-            decks.add(new Card(1, Card.KIND.ATTACK, "b"));
+            decks.add(new Card(1, Card.KIND.ATTACK, "ちくりんてぉ"));
+            decks.add(new Card(2, Card.KIND.DEFENCE, "カエルくん"));
             decks.add(new Card(2, Card.KIND.ATTACK, "c"));
             decks.add(new Card(3, Card.KIND.ATTACK, "d"));
             decks.add(new Card(4, Card.KIND.ATTACK, "e"));
@@ -32,9 +32,13 @@ public class Deck {
      * デッキの内容をシャッフルするよ
      */
     public void shuffle(){
-        ArrayList<Card> tmp = decks;
         for(int i = 0; i < decks.size(); i++){
-            decks.set(rand.nextInt(decks.size()-1), tmp.get(i));
+            int shu = rand.nextInt(decks.size());
+            decks.add(decks.remove(shu-1));
+        }
+        for(int i = 0; i < decks.size(); i++){
+            int shu = rand.nextInt(decks.size());
+            decks.add(decks.remove(shu-1));
         }
     }
 
