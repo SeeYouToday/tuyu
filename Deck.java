@@ -9,7 +9,7 @@ public class Deck {
     Random rand = new Random();
 
     public Deck(){
-
+        
     }
 
     /**
