@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.MediaTracker;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,36 +31,12 @@ public class JFrameSample extends JFrame implements ActionListener{
 		JButton btn2 = new JButton("Help");*/
 
 		/*セルらちゃん表示&処理*/
-		/*ImageIcon icon = new ImageIcon("./png/SELRAisTHIS.png");
-		int iconHeight = icon.getIconHeight();
-		int iconWidth = icon.getIconWidth();
-		JButton selra = new JButton("SELRA");
-		selra.setPreferredSize(new Dimension(iconHeight,iconWidth));
-		selra.setIcon(icon);
-		selra.addActionListener(this);
-		selra.setActionCommand("SELRA");*/
 		create("./png/SELRAisTHIS.png", "SELRA",p);
 
 		/*syuya表示&処理*/
-		/*ImageIcon icon2 = new ImageIcon("./png/syuya.png");
-		int iconHeight2 = icon.getIconHeight();
-		int iconWidth2 = icon.getIconWidth();
-		JButton syuya = new JButton("おかだとしや");
-		syuya.setPreferredSize(new Dimension(iconHeight2,iconWidth2));
-		syuya.setIcon(icon2);
-		syuya.addActionListener(this);
-		syuya.setActionCommand("syuya");*/
-		create("./png/syuya.png", "syuya",p);
+		create("./png/syuya.png", "岡田としや",p);
 
 		/*ブルボン表示&処理*/
-		/*ImageIcon icon3 = new ImageIcon("./png/burubon.png");
-		int iconHeight3 = icon.getIconHeight();
-		int iconWidth3 = icon.getIconWidth();
-		JButton burubon = new JButton("burubon");
-		burubon.setPreferredSize(new Dimension(iconHeight3,iconWidth3));
-		burubon.setIcon(icon3);
-		burubon.addActionListener(this);
-		burubon.setActionCommand("burubon");*/
 		create("./png/burubon.png", "burubon",p);
 
 		/*混沌表示&処理*/
@@ -122,11 +99,13 @@ public class JFrameSample extends JFrame implements ActionListener{
 	/*画像付きボタンを生成そしてどのパネルに追加するかを指定*/
 	public void create(String fileName, String characterName, JPanel panel) {
 		ImageIcon icon = new ImageIcon(fileName);
-		int iconHeight = icon.getIconHeight();
-		int iconWidth = icon.getIconWidth();
 		JButton button = new JButton(characterName);
-		button.setPreferredSize(new Dimension(iconHeight, iconWidth));
-		button.setIcon(icon);
+		MediaTracker tracker = new MediaTracker(this);
+		Image smallImage = icon.getImage().getScaledInstance(icon.getIconWidth(),
+				                                              -1, Image.SCALE_SMOOTH);
+		tracker.addImage(smallImage, 1);
+		ImageIcon smallIcon = new ImageIcon(smallImage);
+		button.setIcon(smallIcon);
 		button.addActionListener(this);
 		button.setActionCommand(characterName);
 		panel.add(button);
