@@ -9,7 +9,7 @@ public class Card{
     private String name;
 
     public enum KIND{
-        ATTACK, DEFENCE, HEAL;
+        ATTACK, DEFENCE, HEAL, TOKEN;
         public static KIND[] getKind(){
             return KIND.values();
         } 
@@ -38,6 +38,11 @@ public class Card{
     }
 
     public String getName(){
+        return name;
+    }
+
+    @Override
+    public String toString(){
         return name;
     }
 }

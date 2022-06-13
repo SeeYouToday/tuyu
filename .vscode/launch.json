@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch TitleGUI",
+            "request": "launch",
+            "mainClass": "TitleGUI",
+            "projectName": "tuyu_5024f4cc"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
