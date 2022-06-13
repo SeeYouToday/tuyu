@@ -32,9 +32,13 @@ public class Deck {
      * デッキの内容をシャッフルするよ
      */
     public void shuffle(){
-        ArrayList<Card> tmp = decks;
         for(int i = 0; i < decks.size(); i++){
-            decks.set(rand.nextInt(decks.size()-1), tmp.get(i));
+            int shu = rand.nextInt(decks.size());
+            decks.add(decks.remove(shu-1));
+        }
+        for(int i = 0; i < decks.size(); i++){
+            int shu = rand.nextInt(decks.size());
+            decks.add(decks.remove(shu-1));
         }
     }
 
