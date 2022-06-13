@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class JFrameSample extends JFrame implements ActionListener{
+public class JFrameSample extends JFrame implements ActionListener {
 
 	/*コンストラクタ
 	 * とりあえずここに全部書いてます
@@ -21,7 +21,7 @@ public class JFrameSample extends JFrame implements ActionListener{
 	public JFrameSample(String title) {
 		setTitle(title);
 		//x,y,幅,高さ
-		setBounds(1000, 1000, 3000, 1000);
+		setBounds(0, 0, 1800, 1000);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel p = new JPanel();
@@ -29,44 +29,41 @@ public class JFrameSample extends JFrame implements ActionListener{
 		JPanel p2 = new JPanel();
 
 		/*セルらちゃん表示&処理*/
-		create("./png/SELRAisTHIS.png", "SELRA",p);
+		create("./png/SELRAisTHIS.png", "SELRA", p);
 
 		/*syuya表示&処理*/
-		create("./png/syuya.png", "岡田としや",p);
+		create("./png/syuya.png", "岡田としや", p);
 
 		/*ブルボン表示&処理*/
-		create("./png/burubon.png", "burubon",p);
+		create("./png/burubon.png", "burubon", p);
 
 		/*かめ表示&処理*/
-		create("./png/abareruhito.png", "混沌",p2);
+		create("./png/abareruhito.png", "混沌", p2);
 		/*かめ(二体目)追加*/
-		create("./png/turtle.png", "混沌2",p2);
+		create("./png/turtle.png", "混沌2", p2);
 		/*人参追加*/
-		create("./png/carrot.png", "混沌3",p2);
+		create("./png/carrot.png", "混沌3", p2);
 		/*gandou等を追加*/
-		create("./png/gandou.png", "gandou",p2);
+		create("./png/gandou.png", "gandou", p2);
 		create("./png/mentuyu.png", "mentuyu", p2);
 		create("./png/rainy.png", "雨", p2);
-		create("./png/kusokimosnail.png", "カタツムリ" ,p2);
-		create("./png/baiuzensen.png","梅雨前線", p2);
+		create("./png/kusokimosnail.png", "カタツムリ", p2);
+		create("./png/baiuzensen.png", "梅雨前線", p2);
 		create("./png/kusokimofrog.png", "カエルDX", p2);
-		create("./png/tako.png", "タコ",p2);
-
-
+		create("./png/tako.png", "タコ", p2);
 
 		//p.setFont(new Font(Font.MONOSPACED,Font.BOLD, 20));
 		//p.add(label);
 
-	    p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
-	    p2.setLayout(new BoxLayout(p2, BoxLayout.LINE_AXIS));
+		p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
+		p2.setLayout(new BoxLayout(p2, BoxLayout.LINE_AXIS));
 
+		//自分のカード
+		getContentPane().add(p, BorderLayout.SOUTH);
+		//相手のカード
+		getContentPane().add(p2, BorderLayout.NORTH);
 
-	    //自分のカード
-	    getContentPane().add(p, BorderLayout.SOUTH);
-	    //相手のカード
-	    getContentPane().add(p2, BorderLayout.NORTH);
-
-	  }
+	}
 
 	/*画像付きボタンを生成そしてどのパネルに追加するかを指定*/
 	public void create(String fileName, String characterName, JPanel panel) {
@@ -75,7 +72,7 @@ public class JFrameSample extends JFrame implements ActionListener{
 		//画像の拡大処理
 		MediaTracker tracker = new MediaTracker(this);
 		Image smallImage = icon.getImage().getScaledInstance((int) (icon.getIconWidth() * 2),
-				                                              -1, Image.SCALE_SMOOTH);
+				-1, Image.SCALE_SMOOTH);
 		tracker.addImage(smallImage, 1);
 		ImageIcon smallIcon = new ImageIcon(smallImage);
 
@@ -95,25 +92,23 @@ public class JFrameSample extends JFrame implements ActionListener{
 		JFrameSample jfs = new JFrameSample("SYTd 梅雨クエスト");
 		jfs.setVisible(true);
 
-
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String cmd =e.getActionCommand();
+		String cmd = e.getActionCommand();
 		// TODO 自動生成されたメソッド・スタブ
 		JLabel label1 = new JLabel("あああああああああ");
 		JLabel label2 = new JLabel("い");
 		JLabel label3 = new JLabel("ブリブリブリ");
-	    if (cmd.equals("burubon")){
-	    	JOptionPane.showMessageDialog(this, label1);
-	   }else if (cmd.equals("syuya")){
-	    	JOptionPane.showMessageDialog(this, label2);
-	   }
-	   else if(cmd.equals("SELRA")) {
-		   JOptionPane.showConfirmDialog(this, label3);
-	   }
-	    System.exit(0);
+		if (cmd.equals("burubon")) {
+			JOptionPane.showMessageDialog(this, label1);
+		} else if (cmd.equals("syuya")) {
+			JOptionPane.showMessageDialog(this, label2);
+		} else if (cmd.equals("SELRA")) {
+			JOptionPane.showConfirmDialog(this, label3);
+		}
+		System.exit(0);
 	}
 
 }
