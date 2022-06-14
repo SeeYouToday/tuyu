@@ -47,9 +47,14 @@ public class Player {
 
 	/**
 	 * hpのセッター
+	 * HPがマイナスになると0に変更します
 	 */
 	public void setHP(int hp) {
-		strategy.setHp(hp);
+		int newHP = hp;
+		if (newHP<0) {
+			newHP = 0;
+		}
+		strategy.setHp(newHP);
 	}
 
 	/**

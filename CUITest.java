@@ -12,7 +12,7 @@ public class CUITest {
         tuyu.actions();
         Player player = tuyu.getWinPlayer();
         if (player!=null) {
-			System.out.println("勝者: "+player);
+			System.out.println("勝者: "+player.getPlayerName());
 		}else {
 			System.out.println("引き分け");
 		}

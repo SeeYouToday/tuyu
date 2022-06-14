@@ -240,7 +240,6 @@ public class Tuyu {
 	public Player getWinPlayer() {
 		Player result = null;
 		for (Player player : players) {
-			System.out.println(player.getHand().getHands().get(0).getKind());
 			if (player.getHand().getHands().get(0).getKind() == Card.KIND.WIN) {
 				result = player;
 			}
