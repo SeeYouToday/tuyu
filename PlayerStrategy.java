@@ -1,4 +1,6 @@
-
+/**
+ * プレイヤーのクラスだお
+ */
 public class PlayerStrategy extends Strategy {
 
 	public PlayerStrategy() {
@@ -6,6 +8,10 @@ public class PlayerStrategy extends Strategy {
 		maisuu = 3;
 	}
 
+	/**
+	 * 手札を一周見て攻撃カードがなかったら-1を返すやでぇ
+	 * 攻撃カードがあれば選択したカードが手札の何番目にあるかを返す構造になる予定や
+	 */
 	@Override
 	public int decideAttack(Player player) {
 		boolean existAttack = false;
@@ -23,6 +29,10 @@ public class PlayerStrategy extends Strategy {
 		}
 	}
 
+	/**
+	 * 手札を一周見て防御カードがなかったら-1を返すやでぇ
+	 * 防御カードがあれば選択したカードが手札の何番目にあるかを返す構造になる予定や
+	 */
 	@Override
 	public int decideDefence(Player player) {
 		boolean existDefence = false;
