@@ -51,6 +51,7 @@ public class Deck {
 	 */
 	public Card draw() {
 		if (zeroCheck()) {
+			
 			return new Card(0, Card.KIND.END, "end");
 		}
 		return decks.remove(0);

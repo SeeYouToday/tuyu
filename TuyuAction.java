@@ -10,6 +10,7 @@ public class TuyuAction {
 	 */
 	private Card attackCard, defenceCard;
 	private Tuyu tuyu;
+	int i = 0;
 	
 	/**
 	 * コンストラクタ
@@ -17,10 +18,16 @@ public class TuyuAction {
 	 * @param defenceCard 防御カード
 	 * @param tuyu 移譲するためのインスタンス
 	 */
-	public TuyuAction(Card attackCard, Card defenceCard, Tuyu tuyu) {
-		this.attackCard = attackCard;
-		this.defenceCard = defenceCard;
+	public TuyuAction(Tuyu tuyu) {
 		this.tuyu = tuyu;
+	}
+	
+	public void setAttackCard(Card attackCard) {
+		this.attackCard = attackCard;
+	}
+	
+	public void setDefenceCard(Card defenceCard) {
+		this.defenceCard = defenceCard;
 	}
 	
 	/**
@@ -28,7 +35,9 @@ public class TuyuAction {
 	 * @return 攻撃力
 	 */
 	public int getAttackCardPower() {
-		return attackCard.getNum();
+		int dm = attackCard.getNum();
+//		System.out.println("攻撃力"+dm);
+		return dm;
 	}
 	
 	/**
@@ -36,7 +45,9 @@ public class TuyuAction {
 	 * @return 防御力
 	 */
 	public int getDefenceCardPower() {
-		return defenceCard.getNum();
+		int df = defenceCard.getNum();
+//		System.out.println("防御力"+df);
+		return df;
 	}
 	
 	/**
@@ -79,6 +90,15 @@ public class TuyuAction {
         actionHP(DefencePlayerNum);
     }
     
+    public void draw() {
+    	if (Deck.getInstance().draw().getKind()==Card.KIND.END) {
+			tuyu.getPlayer(0).getHand().clearHand();
+			tuyu.getPlayer(1).getHand().clearHand();
+		}
+    	tuyu.getPlayer(0).getHand().add(Deck.getInstance().draw());
+    	tuyu.getPlayer(1).getHand().add(Deck.getInstance().draw());
+    }
+    
     /**
      * メインの処理(HP処理)
      * @param DefencePlayerNum 防御側のプレイヤ番号
@@ -89,29 +109,34 @@ public class TuyuAction {
     	//どちらも該当するカードがない場合
     	if (getAttackCardKind()==Card.KIND.TOKEN&&getDefenceCardKind()==Card.KIND.TOKEN){
     		System.out.println("どちらもカードなし");
-    		tuyu.getPlayer(0).getHand().add(Deck.getInstance().draw());
-    		tuyu.getPlayer(1).getHand().add(Deck.getInstance().draw());
+    		draw();
 			return;
 		}
     	//攻撃側に該当するカードがない場合
     	if (getAttackCardKind()==Card.KIND.TOKEN) {
     		System.out.println("攻撃側カードなし");
-    		tuyu.getPlayer(DefencePlayerNum==1?0:1).getHand().add(Deck.getInstance().draw());
+    		Card card = Deck.getInstance().draw();
+    		if (card.getKind() == Card.KIND.END) {
+    			tuyu.getPlayer(0).getHand().clearHand();
+    			tuyu.getPlayer(1).getHand().clearHand();
+			}
+    		tuyu.getPlayer(DefencePlayerNum==1?0:1).getHand().add(card);
     		return;
 		}
     	//防御力のほうが高かった場合
     	if ((getAttackCardPower()<=getDefenceCardPower())) {
     		System.out.println("ガード成功");
-    		tuyu.getPlayer(0).getHand().add(Deck.getInstance().draw());
-    		tuyu.getPlayer(1).getHand().add(Deck.getInstance().draw());
+    		draw();
 			return;
 		}else {
-			newHp = hp-(getAttackCardPower()-getDefenceCardPower());    
+			System.out.print("ここだよね？");
+			newHp = hp-(getAttackCardPower()-getDefenceCardPower()); 
+			System.out.println((getAttackCardPower()-getDefenceCardPower()) + "ダメージ！");
 			tuyu.getPlayer(DefencePlayerNum).setHP(newHp);
+			draw();
 			System.out.print("player" + String.valueOf(DefencePlayerNum)+"に");
 			System.out.println((getAttackCardPower()-getDefenceCardPower()) + "ダメージ！");
-			tuyu.getPlayer(0).getHand().add(Deck.getInstance().draw());
-    		tuyu.getPlayer(1).getHand().add(Deck.getInstance().draw());
+			
 		}
     	
     }

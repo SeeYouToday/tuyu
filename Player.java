@@ -65,14 +65,17 @@ public class Player {
 	public void setMaisuu(int maisuu) {
 		strategy.setMaisu(maisuu);
 	}
+	
+	
 
 	/**
 	 * handのゲッター
 	 * @return 現在の手札枚数
 	 */
 	public int getHandMaisu() {
-		return strategy.getMaisuu();
-	}
+//		return strategy.getMaisuu();
+		return hand.getHands().size();
+		}
 
 	/**
 	 * isDefenceのセッター
