@@ -13,6 +13,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
@@ -59,6 +60,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JLabel aiteCardLabel;
 	private JLabel arrowLabel;
 	private JButton passButton;
+	private JLayeredPane titlePanel;
 
 	/**
 	 * Launch the application.
@@ -90,7 +92,6 @@ public class GUI extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(layout);
 
-		// 1枚目
 		JPanel inputNamePanel = new JPanel();
 		contentPane.add(inputNamePanel, "name_621173694056900");
 		inputNamePanel.setLayout(null);
