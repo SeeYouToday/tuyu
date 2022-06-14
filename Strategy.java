@@ -7,10 +7,20 @@ public abstract class Strategy {
 	protected int maisuu;
 
 	public enum STRATEGY {
-		PLAYERSTRATEGY, BOYSTRATEGY, GIRLSTRATEGY, GANDOUSTRATEGY;
+		PLAYERSTRATEGY("プレイヤー"), BOYSTRATEGY("男の子"), GIRLSTRATEGY("女の子"), GANDOUSTRATEGY("がんどう");
+
+		private final String strategyName;
 
 		public static STRATEGY[] getStrategy() {
 			return STRATEGY.values();
+		}
+
+		STRATEGY(String strategyName){
+			this.strategyName = strategyName;
+		}
+
+		public String toString(){
+			return strategyName;
 		}
 	}
 

@@ -35,9 +35,9 @@ public class BoyStrategy extends Strategy {
 		}
 		if (flag) {
 			if (boy.getHandMaisu() < 4) {
-				for (int i = 1; i < boy.getHandMaisu(); i++) {
+				for (int i = 0; i < boy.getHandMaisu(); i++) {
 					tmp = boy.getHand().check(i);
-					if (max.getNum() < tmp.getNum()) {
+					if (max.getNum() < tmp.getNum() && tmp.getKind() == Card.KIND.ATTACK) {
 						max = tmp;
 						ret = i;
 					}
@@ -45,7 +45,7 @@ public class BoyStrategy extends Strategy {
 			} else {
 				for (int i = 0; i < boy.getHandMaisu(); i++) {
 					tmp = boy.getHand().check(i);
-					if (min.getNum() > tmp.getNum()) {
+					if (min.getNum() > tmp.getNum() && tmp.getKind() == Card.KIND.ATTACK) {
 						min = tmp;
 						ret = i;
 					}
@@ -88,7 +88,7 @@ public class BoyStrategy extends Strategy {
 			if (boy.getHP() > 10) {
 				for (int i = 1; i < boy.getHandMaisu(); i++) {
 					tmp = boy.getHand().check(i);
-					if (max.getNum() < tmp.getNum() && boy.getPain() >= tmp.getNum()) {
+					if (max.getNum() < tmp.getNum() && boy.getPain() >= tmp.getNum() && tmp.getKind() == Card.KIND.DEFENCE) {
 						max = tmp;
 						ret = i;
 						flag2 = true;
@@ -97,7 +97,7 @@ public class BoyStrategy extends Strategy {
 				if (!flag2) {
 					for (int i = 0; i < boy.getHandMaisu(); i++) {
 						tmp = boy.getHand().check(i);
-						if (min.getNum() > tmp.getNum() && boy.getPain() <= tmp.getNum()) {
+						if (min.getNum() > tmp.getNum() && boy.getPain() <= tmp.getNum() && tmp.getKind() == Card.KIND.DEFENCE) {
 							min = tmp;
 							ret = i;
 						}
