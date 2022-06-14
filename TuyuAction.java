@@ -129,7 +129,6 @@ public class TuyuAction {
     		draw();
 			return;
 		}else {
-			System.out.print("ここだよね？");
 			newHp = hp-(getAttackCardPower()-getDefenceCardPower()); 
 			System.out.println((getAttackCardPower()-getDefenceCardPower()) + "ダメージ！");
 			tuyu.getPlayer(DefencePlayerNum).setHP(newHp);
