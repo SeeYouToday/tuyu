@@ -1,3 +1,7 @@
+/**
+ * ストラテジーの具象クラス
+ * 男の子を表し，初期体力は40，初期手札は3
+ */
 public class BoyStrategy extends Strategy {
 
 	public BoyStrategy() {
