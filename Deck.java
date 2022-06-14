@@ -10,7 +10,7 @@ public class Deck {
 	Random rand = new Random();
 
 	private Deck() {
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 10; i++) {
 			decks.add(new Card(1, Card.KIND.DEFENCE, "がんどう"));
 			decks.add(new Card(6, Card.KIND.ATTACK, "たこ"));
 			decks.add(new Card(2, Card.KIND.ATTACK, "ちくりんてぉ"));

@@ -5,25 +5,18 @@
 public class CUITest {
 	public void mainAction() {
 		Tuyu tuyu = new Tuyu();
-        tuyu.addPlayer("BOYSTRATEGY");
-        tuyu.addPlayer("GIRLSTRATEGY");
+        tuyu.addPlayer("BOYSTRATEGY", "としや");
+        tuyu.addPlayer("GIRLSTRATEGY", "くるみ");
         tuyu.makePlayerHand();
         
         tuyu.actions();
-        switch (tuyu.getPlayer(0).getHand().use(0).getKind()) {
-		case WIN:
-			System.out.println("player0の勝利");
-			System.out.println();
-			break;
-		case LOSE:
-			System.out.println("player1の勝利");
-			System.out.println();
-			break;
-		case PEACE:
-			System.out.println("引き分け！！平和！");
-			System.out.println();
-			break;
+        Player player = tuyu.getWinPlayer();
+        if (player!=null) {
+			System.out.println("勝者: "+player);
+		}else {
+			System.out.println("引き分け");
 		}
+        
 	}
 	public static void main(String[] args) {
 		for (int i = 0; i < １; i++) {

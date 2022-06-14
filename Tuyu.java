@@ -24,8 +24,8 @@ public class Tuyu {
 	 * 
 	 * @param strategy プレイヤーの戦略名
 	 */
-	public void addPlayer(String strategy) {
-		players.add(new Player(strategy));
+	public void addPlayer(String strategy, String playerName) {
+		players.add(new Player(strategy, playerName));
 	}
 
 	/**
@@ -226,12 +226,18 @@ public class Tuyu {
 			}
 		}
 		if (getPlayer(0).getHP() > getPlayer(1).getHP()) {
+			getPlayer(0).getHand().clearHand();
+			getPlayer(1).getHand().clearHand();
 			getPlayer(0).getHand().add(new Card(0, Card.KIND.WIN, ""));
 			getPlayer(1).getHand().add(new Card(0, Card.KIND.LOSE, ""));
 		} else if (getPlayer(0).getHP() < getPlayer(1).getHP()) {
+			getPlayer(0).getHand().clearHand();
+			getPlayer(1).getHand().clearHand();
 			getPlayer(0).getHand().add(new Card(0, Card.KIND.LOSE, ""));
 			getPlayer(1).getHand().add(new Card(0, Card.KIND.WIN, ""));
 		} else {
+			getPlayer(0).getHand().clearHand();
+			getPlayer(1).getHand().clearHand();
 			getPlayer(0).getHand().add(new Card(0, Card.KIND.PEACE, ""));
 			getPlayer(1).getHand().add(new Card(0, Card.KIND.PEACE, ""));
 		}
@@ -245,6 +251,7 @@ public class Tuyu {
 	public Player getWinPlayer() {
 		Player result = null;
 		for (Player player : players) {
+			System.out.println(player.getHand().getHands().get(0).getKind());
 			if (player.getHand().getHands().get(0).getKind() == Card.KIND.WIN) {
 				result = player;
 			}
