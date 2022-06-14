@@ -37,6 +37,10 @@ public class Player {
 			return new BoyStrategy();
 		} else if (strategyName.equals(Strategy.STRATEGY.GIRLSTRATEGY.name())) {
 			return new GirlStrategy();
+		} else if (strategyName.equals(Strategy.STRATEGY.GANDOUSTRATEGY.name())) {
+			return new GandouStrategy();
+		} else if (strategyName.equals(Strategy.STRATEGY.PLAYERSTRATEGY.name())) {
+			return new PlayerStrategy();
 		}
 		return null;
 	}
@@ -64,6 +68,7 @@ public class Player {
 	public void setHand(Hand hand) {
 		this.hand = hand;
 	}
+
 	/**
 	 * maisuuのセッター
 	 * @param 現在の手札
@@ -71,17 +76,15 @@ public class Player {
 	public void setMaisuu(int maisuu) {
 		strategy.setMaisu(maisuu);
 	}
-	
-	
 
 	/**
 	 * handのゲッター
 	 * @return 現在の手札枚数
 	 */
 	public int getHandMaisu() {
-//		return strategy.getMaisuu();
+		//		return strategy.getMaisuu();
 		return hand.getHands().size();
-		}
+	}
 
 	/**
 	 * isDefenceのセッター
@@ -122,6 +125,7 @@ public class Player {
 	public int getPain() {
 		return pain;
 	}
+
 	/**
 	 * ストラテジーのゲッター
 	 * @return 戦略

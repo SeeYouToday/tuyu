@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+
 /**
  * デッキを表すクラス
  */
@@ -10,7 +11,7 @@ public class Deck {
 	Random rand = new Random();
 
 	private Deck() {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 15; i++) {
 			decks.add(new Card(1, Card.KIND.DEFENCE, "がんどう"));
 			decks.add(new Card(6, Card.KIND.ATTACK, "たこ"));
 			decks.add(new Card(2, Card.KIND.ATTACK, "ちくりんてぉ"));
@@ -51,7 +52,7 @@ public class Deck {
 	 */
 	public Card draw() {
 		if (zeroCheck()) {
-			
+
 			return new Card(0, Card.KIND.END, "end");
 		}
 		return decks.remove(0);

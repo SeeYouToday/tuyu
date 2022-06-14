@@ -30,7 +30,6 @@ public class Tuyu {
 
 	/**
 	 * プレイヤーのゲッター
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 * @return
 	 */
@@ -52,7 +51,6 @@ public class Tuyu {
 
 	/**
 	 * プレイヤーのカードオブジェクトを返します
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 */
 	private Card getCard(int playerNum, int cardNum) {
@@ -61,7 +59,6 @@ public class Tuyu {
 
 	/**
 	 * 指定したプレイヤーのカード名を返します
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 * @param cardNum   カード番号
 	 * @return カード名
@@ -72,7 +69,6 @@ public class Tuyu {
 
 	/**
 	 * 指定したプレイヤーのカードの攻撃力(防御力)を返します
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 * @param cardNum   カード番号
 	 * @return 攻撃力(防御力)
@@ -83,7 +79,6 @@ public class Tuyu {
 
 	/**
 	 * 指定したプレイヤーのカードの種類を返します
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 * @param cardNum   カード番号
 	 * @return カードの種類
@@ -94,18 +89,16 @@ public class Tuyu {
 
 	/**
 	 * 下記のメソッドで使うプレイヤーの攻撃カードを選ぶ
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 * @return 攻撃で選ばれたCardオブジェクト
 	 */
-	private Card decideAttackCard(int playerNum) {
+	public Card decideAttackCard(int playerNum) {
 		return players.get(playerNum).getHand()
-				.use(players.get(playerNum).getStrategy().decideAttack(players.get(playerNum)));
+				.check(players.get(playerNum).getStrategy().decideAttack(players.get(playerNum)));
 	}
 
 	/**
 	 * 攻撃カードの名前を返す
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 * @return 攻撃カードの名前
 	 */
@@ -115,7 +108,6 @@ public class Tuyu {
 
 	/**
 	 * 攻撃カードの攻撃力を返す
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 * @return 攻撃カードの攻撃力
 	 */
@@ -125,18 +117,16 @@ public class Tuyu {
 
 	/**
 	 * 下記のメソッドで使うプレイヤーの防御カードを選ぶ
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 * @return 防御で選ばれたCardオブジェクト
 	 */
-	private Card decideDefenceCard(int playerNum) {
+	public Card decideDefenceCard(int playerNum) {
 		return players.get(playerNum).getHand()
-				.use(players.get(playerNum).getStrategy().decideDefence(players.get(playerNum)));
+				.check(players.get(playerNum).getStrategy().decideDefence(players.get(playerNum)));
 	}
 
 	/**
 	 * 防御カードの名前を返す
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 * @return 防御カードの名前
 	 */
@@ -146,7 +136,6 @@ public class Tuyu {
 
 	/**
 	 * 防御カードの防御力を返す
-	 * 
 	 * @param playerNum プレイヤー（はじめの人が0）
 	 * @return 防御カードの防御力
 	 */
