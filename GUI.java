@@ -141,6 +141,7 @@ public class GUI extends JFrame implements ActionListener {
 					tuyu.getCardName(0, i) + tuyu.getCardKind(0, i));
 			cardButton.addActionListener(this);
 			cardButtonsP.add(cardButton);
+			cards.add(cardButton);
 		}
 
 		for (int i = 0; i < tuyu.getPlayer(1).getHandMaisu(); i++) {
