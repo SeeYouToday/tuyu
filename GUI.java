@@ -1,6 +1,7 @@
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,7 +46,7 @@ public class GUI extends JFrame implements ActionListener {
 		titlegui = new TitleGUI();
 		tuyu = titlegui.getterTuyu();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 700);
+		setBounds(100, 100, 700, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -58,27 +59,40 @@ public class GUI extends JFrame implements ActionListener {
 		JLabel selectLabel = new JLabel("相手の戦略を選んでね");
 		selectLabel.setFont(new Font("MS UI Gothic", Font.PLAIN, 25));
 
+		contentPane.add(choose);
+		choose.setLayout(new BorderLayout());
+		choose.add(selectLabel, BorderLayout.NORTH);
+		/*
+		JPanel panel = new JPanel();
+		choose.add(panel, BorderLayout.CENTER);
+		*/
+		JPanel strategyPanel = new JPanel();
+		choose.add(strategyPanel, BorderLayout.CENTER);
+
 		BoyButton = titlegui.createIconNamedButton("./png/kakkoiiman.png", "男の子戦略");
 		BoyButton.addActionListener(this);
-		choose.add(BoyButton);
+		strategyPanel.add(BoyButton);
 
 		GirlButton = titlegui.createIconNamedButton("./png/kawaiiwoman.png", "女の子戦略");
 		GirlButton.addActionListener(this);
-		choose.add(GirlButton);
-		contentPane.add(choose);
-		choose.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		choose.add(selectLabel);
+		strategyPanel.add(GirlButton);
 
 		//2枚目
 		JPanel game = new JPanel();
+		game.setBackground(new Color(0, 128, 0));
 		game.setBounds(12, 125, 410, 126);
 		contentPane.add(game);
 		game.setLayout(null);
 
 		cards = new JPanel();
-		cards.setBounds(0, 444, 424, 150);
+		cards.setBackground(new Color(0, 128, 0));
+		cards.setBounds(0, 286, 674, 150);
 		game.add(cards);
 		cards.setLayout(new BoxLayout(cards, BoxLayout.X_AXIS));
+
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 10, 674, 136);
+		game.add(panel);
 
 	}
 
@@ -108,8 +122,10 @@ public class GUI extends JFrame implements ActionListener {
 	public void gaming() {
 		System.out.println(tuyu.players.size());
 		tuyu.makePlayerHand();
+
 		for (int i = 0; i < tuyu.getPlayer(0).getHandMaisu(); i++) {
-			JButton cardButton = titlegui.createIconNamedButton("./png/tako.png", tuyu.getCardName(0, i));
+			JButton cardButton = titlegui.createIconNamedButton("./png/" + tuyu.getCardName(0, i) + ".png",
+					tuyu.getCardName(0, i) + tuyu.getCardKind(0, i));
 			cards.add(cardButton);
 		}
 	}
