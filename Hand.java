@@ -19,6 +19,9 @@ public class Hand {
             hands.remove(0);
         }
     }
+    public ArrayList<Card> getHands(){
+    	return this.hands;
+    }
 
     public void clearHand() {
     	hands.clear();
