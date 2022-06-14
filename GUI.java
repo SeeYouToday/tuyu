@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -22,6 +23,9 @@ public class GUI extends JFrame implements ActionListener {
 	private Tuyu tuyu;
 	private TitleGUI titlegui;
 	private JPanel cards;
+	private ArrayList<JButton> cardButtonsP = new ArrayList<>();
+	private ArrayList<JButton> cardButtonsA = new ArrayList<>();
+	private boolean isStarted = false;
 
 	/**
 	 * Launch the application.
@@ -99,6 +103,10 @@ public class GUI extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		String cmd = event.getActionCommand();
+		if (isStarted) {
+
+		}
+
 		if (cmd.equals("男の子戦略")) {
 			//ここにすとらてじいいいいいいを
 			tuyu.addPlayer(Strategy.STRATEGY.PLAYERSTRATEGY.name());
@@ -117,16 +125,26 @@ public class GUI extends JFrame implements ActionListener {
 
 		}
 
+		if (cardButtonsP.contains(event.getSource())) {
+			System.out.println(cmd + "の処理");
+			System.out.println(cardButtonsP.indexOf(event.getSource()) + 1 + "番目のカード");
+		}
+
 	}
 
 	public void gaming() {
-		System.out.println(tuyu.players.size());
+		isStarted = true;
 		tuyu.makePlayerHand();
-
 		for (int i = 0; i < tuyu.getPlayer(0).getHandMaisu(); i++) {
 			JButton cardButton = titlegui.createIconNamedButton("./png/" + tuyu.getCardName(0, i) + ".png",
 					tuyu.getCardName(0, i) + tuyu.getCardKind(0, i));
+			cardButton.addActionListener(this);
+			cardButtonsP.add(cardButton);
 			cards.add(cardButton);
+		}
+
+		for (int i = 0; i < tuyu.getPlayer(1).getHandMaisu(); i++) {
+
 		}
 	}
 }
