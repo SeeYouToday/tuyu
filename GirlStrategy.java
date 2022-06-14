@@ -27,6 +27,7 @@ public class GirlStrategy extends Strategy {
 				max = girl.getHand().check(i);
 				min = max;
 				flag = true;
+				ret = i;
 				break;
 			}
 		}
@@ -75,6 +76,7 @@ public class GirlStrategy extends Strategy {
 				max = girl.getHand().check(i);
 				min = max;
 				flag = true;
+				ret = i;
 				break;
 			}
 		}
