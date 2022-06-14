@@ -140,6 +140,10 @@ public class Tuyu {
     	return decideDefenceCard(playerNum).getNum();
     }
     
+    public ArrayList<Card> getHandArray(int playerNum){
+    	return getPlayer(playerNum).getHand().getHands();
+    }
+    
     /**
      * player0の行動メソッド
      */
