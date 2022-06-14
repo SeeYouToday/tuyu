@@ -24,6 +24,8 @@ public abstract class Strategy {
 			return new BoyStrategy();
 		} else if (strategy == STRATEGY.GIRLSTRATEGY) {
 			return new GirlStrategy();
+		} else if (strategy == STRATEGY.PLAYERSTRATEGY) {
+			return new PlayerStrategy();
 		}
 		return null;
 	}
