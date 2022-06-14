@@ -89,6 +89,33 @@ public class TitleGUI extends JFrame implements ActionListener {
 		return button;
 	}
 
+	public JLabel createIconLabel(String iconPath) {
+		ImageIcon icon = new ImageIcon(iconPath);
+		JLabel label = new JLabel();
+		//画像の拡大処理
+		MediaTracker tracker = new MediaTracker(this);
+		Image smallImage = icon.getImage().getScaledInstance((int) (icon.getIconWidth() * 2),
+				-1, Image.SCALE_SMOOTH);
+		tracker.addImage(smallImage, 1);
+		ImageIcon smallIcon = new ImageIcon(smallImage);
+		label.setIcon(smallIcon);
+		//水平方向を中央揃えで設定
+		label.setHorizontalTextPosition(JButton.CENTER);
+		//垂直方法を下部で設定
+		label.setVerticalTextPosition(SwingConstants.BOTTOM);
+		return label;
+	}
+
+	public ImageIcon createIcomImageLabel(String iconPath) {
+		ImageIcon icon = new ImageIcon(iconPath);
+		//画像の拡大処理
+		MediaTracker tracker = new MediaTracker(this);
+		Image smallImage = icon.getImage().getScaledInstance((int) (icon.getIconWidth() * 2),
+				-1, Image.SCALE_SMOOTH);
+		tracker.addImage(smallImage, 1);
+		return new ImageIcon(smallImage);
+	}
+
 	public Tuyu getterTuyu() {
 		return tuyu;
 	}
