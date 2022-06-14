@@ -138,5 +138,12 @@ public class TuyuAction {
 			
 		}
     	
+    	if (tuyu.getPlayer(DefencePlayerNum).getHP()==0 || tuyu.getPlayer(DefencePlayerNum==1?0:1).getHP()==0) {
+    		tuyu.getPlayer(0).getHand().clearHand();
+			tuyu.getPlayer(1).getHand().clearHand();
+			tuyu.getPlayer(0).getHand().add(new Card(0, Card.KIND.END, ""));
+			tuyu.getPlayer(1).getHand().add(new Card(0, Card.KIND.END, ""));
+		}
+    	
     }
 }
