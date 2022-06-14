@@ -19,7 +19,7 @@ public class CUITest {
         
 	}
 	public static void main(String[] args) {
-		for (int i = 0; i < １; i++) {
+		for (int i = 0; i < 1; i++) {
 			CUITest cuiTest = new CUITest();
 			cuiTest.mainAction();
 		}
