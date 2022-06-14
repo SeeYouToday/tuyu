@@ -12,14 +12,14 @@ public class CUITest {
         tuyu.actions();
         Player player = tuyu.getWinPlayer();
         if (player!=null) {
-			System.out.println("勝者: "+player);
+			System.out.println("勝者: "+player.getPlayerName());
 		}else {
 			System.out.println("引き分け");
 		}
         
 	}
 	public static void main(String[] args) {
-		for (int i = 0; i < １; i++) {
+		for (int i = 0; i < 1; i++) {
 			CUITest cuiTest = new CUITest();
 			cuiTest.mainAction();
 		}

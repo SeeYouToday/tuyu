@@ -38,7 +38,7 @@ public class GUI extends JFrame implements ActionListener {
 	private TitleGUI titlegui;
 	private JPanel playerCards;
 	private ArrayList<JButton> playerHand = new ArrayList<>();
-	//private ArrayList<JLabel> aiteHand = new ArrayList<>();
+	// private ArrayList<JLabel> aiteHand = new ArrayList<>();
 	private boolean isStarted = false;
 	private JPanel aiteCards;
 	private JLabel aiteNameAndHP;
@@ -92,20 +92,6 @@ public class GUI extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(layout);
 
-		/*
-		titlePanel = new JLayeredPane();
-		contentPane.add(titlePanel, "name_656593377436300");
-		titlePanel.setLayout(null);
-		
-		JLabel titleLabel = new JLabel();
-		titleLabel.setBounds(482, 10, 0, 0);
-		titlePanel.setLayer(titleLabel, 1);
-		titleLabel.setIcon(titlegui.createIcomImageLabel("./png/title.png"));
-		titlePanel.add(titleLabel);
-		contentPane.add(titlePanel);
-		*/
-
-		//1枚目
 		JPanel inputNamePanel = new JPanel();
 		contentPane.add(inputNamePanel, "name_621173694056900");
 		inputNamePanel.setLayout(null);
@@ -143,7 +129,7 @@ public class GUI extends JFrame implements ActionListener {
 		GandouButton.addActionListener(this);
 		strategyPanel.add(GandouButton);
 
-		//2枚目
+		// 2枚目
 		JPanel game = new JPanel();
 		game.setBackground(new Color(0, 128, 0));
 		game.setBounds(12, 125, 410, 126);
@@ -290,32 +276,32 @@ public class GUI extends JFrame implements ActionListener {
 		String cmd = event.getActionCommand();
 
 		if (cmd.equals("男の子戦略")) {
-			//ここにすとらてじいいいいいいを
+			// ここにすとらてじいいいいいいを
 			tuyu.addPlayer(Strategy.STRATEGY.PLAYERSTRATEGY.name(), playerName);
-			//tuyu.addPlayer(Strategy.STRATEGY.GIRLSTRATEGY.name());
-			tuyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name(), Strategy.STRATEGY.BOYSTRATEGY.toString());
+			// tuyu.addPlayer(Strategy.STRATEGY.GIRLSTRATEGY.name());
 			aiteName = Strategy.STRATEGY.BOYSTRATEGY.toString();
+			tuyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name(), aiteName);
 			run();
 			layout.next(contentPane);
 
 		}
 		if (cmd.equals("女の子戦略")) {
-			//生成して欲しいねんけどわからんち
+			// 生成して欲しいねんけどわからんち
 			tuyu.addPlayer(Strategy.STRATEGY.PLAYERSTRATEGY.name(), playerName);
-			//uyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name());
-			tuyu.addPlayer(Strategy.STRATEGY.GIRLSTRATEGY.name(), Strategy.STRATEGY.GIRLSTRATEGY.toString());
+			// uyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name());
 			aiteName = Strategy.STRATEGY.GIRLSTRATEGY.toString();
+			tuyu.addPlayer(Strategy.STRATEGY.GIRLSTRATEGY.name(), aiteName);
 			run();
 			layout.next(contentPane);
 
 		}
 
 		if (cmd.equals("Gandou戦略")) {
-			//生成して欲しいねんけどわからんち
+			// 生成して欲しいねんけどわからんち
 			tuyu.addPlayer(Strategy.STRATEGY.PLAYERSTRATEGY.name(), playerName);
-			//tuyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name());
-			tuyu.addPlayer(Strategy.STRATEGY.GANDOUSTRATEGY.name(), Strategy.STRATEGY.GANDOUSTRATEGY.toString());
+			// tuyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name());
 			aiteName = Strategy.STRATEGY.GANDOUSTRATEGY.toString();
+			tuyu.addPlayer(Strategy.STRATEGY.GANDOUSTRATEGY.name(), aiteName);
 			run();
 			layout.next(contentPane);
 
@@ -444,31 +430,76 @@ public class GUI extends JFrame implements ActionListener {
 			return;
 		}
 
-		//プレイヤーの攻撃ターン
+		// プレイヤーの攻撃ターン
 		if (turnType == Card.KIND.ATTACK && whoMovable == WHOMOVABLE.PLAYER) {
 			turnType = Card.KIND.DEFENCE;
 			whoMovable = WHOMOVABLE.AITE;
 			whatActionLabel.setText("防御");
 			whoTurnLabel.setText(aiteName + "の");
 			aiteBrain();
-			//相手の防御ターン
+			// 相手の防御ターン
 		} else if (turnType == Card.KIND.DEFENCE && whoMovable == WHOMOVABLE.AITE) {
 			turnType = Card.KIND.ATTACK;
 			whatActionLabel.setText("攻撃");
 			tuyuAction.action(1);
 			updateHP();
-			//相手の攻撃ターン
+			if (tuyu.getPlayer(0).getHand().getHands().get(0).getKind() == Card.KIND.END) {
+				Player player = tuyu.getWinPlayer();
+				if (player != null) {
+					broadCastBox.setText("勝者: " + player.getPlayerName() + "\n");
+					Timer timer = new Timer();
+					TimerTask task1 = new TimerTask() {
+						public void run() {
+							System.exit(0);
+						}
+					};
+					timer.schedule(task1, 5000);
+				} else {
+					broadCastBox.setText("引き分け\n");
+					Timer timer = new Timer();
+					TimerTask task1 = new TimerTask() {
+						public void run() {
+							System.exit(0);
+						}
+					};
+					timer.schedule(task1, 5000);
+				}
+			}
+			// 相手の攻撃ターン
 		} else if (turnType == Card.KIND.ATTACK && whoMovable == WHOMOVABLE.AITE) {
 			turnType = Card.KIND.DEFENCE;
 			whoMovable = WHOMOVABLE.PLAYER;
 			whatActionLabel.setText("防御");
 			whoTurnLabel.setText(playerName + "の");
-			//プレイヤーの防御ターン
+			// プレイヤーの防御ターン
 		} else if (turnType == Card.KIND.DEFENCE && whoMovable == WHOMOVABLE.PLAYER) {
 			turnType = Card.KIND.ATTACK;
 			whatActionLabel.setText("攻撃");
 			tuyuAction.action(0);
 			updateHP();
+			if (tuyu.getPlayer(0).getHand().getHands().get(0).getKind() == Card.KIND.END) {
+				Player player = tuyu.getWinPlayer();
+				if (player != null) {
+					broadCastBox.setText("勝者: " + player.getPlayerName() + "\n");
+					Timer timer = new Timer();
+					TimerTask task1 = new TimerTask() {
+						public void run() {
+							System.exit(0);
+						}
+					};
+					timer.schedule(task1, 5000);
+				} else {
+					broadCastBox.setText("引き分け\n");
+					Timer timer = new Timer();
+					TimerTask task1 = new TimerTask() {
+						public void run() {
+							System.exit(0);
+						}
+					};
+					timer.schedule(task1, 5000);
+					
+				}
+			}
 		}
 	}
 
@@ -493,7 +524,7 @@ public class GUI extends JFrame implements ActionListener {
 
 		for (int i = 0; i < tuyu.getPlayer(1).getHandMaisu(); i++) {
 			JLabel cardLabel = titlegui.createIconLabel("./png/うら.png");
-			//aiteHand.add(cardLabel);
+			// aiteHand.add(cardLabel);
 			aiteCards.add(cardLabel);
 		}
 
