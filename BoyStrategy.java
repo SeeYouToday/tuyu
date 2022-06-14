@@ -29,6 +29,7 @@ public class BoyStrategy extends Strategy {
 			if (boy.getHand().check(i).getKind().equals(Card.KIND.ATTACK)) {
 				max = boy.getHand().check(i);
 				min = max;
+				ret = i;
 				flag = true;
 				break;
 			}
@@ -81,6 +82,7 @@ public class BoyStrategy extends Strategy {
 				max = boy.getHand().check(i);
 				min = max;
 				flag = true;
+				ret = i;
 				break;
 			}
 		}
