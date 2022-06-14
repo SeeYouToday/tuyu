@@ -2,19 +2,18 @@ import java.util.ArrayList;
 
 /**
  * このゲームのメインとなるクラス
+ * 
  * @author 北川奨真
  */
 public class Tuyu {
 	/*
-	 * player: ゲームを行うプレイヤーのリスト
-	 * deck: シングルトンパターンであるDeckクラスの参照型変数
+	 * player: ゲームを行うプレイヤーのリスト deck: シングルトンパターンであるDeckクラスの参照型変数
 	 */
 	protected ArrayList<Player> players;
 	Deck deck = Deck.getInstance();
 
 	/**
-	 * コンストラクタ
-	 * playerのArrayList作成
+	 * コンストラクタ playerのArrayList作成
 	 */
 	public Tuyu() {
 		players = new ArrayList<>();
@@ -22,10 +21,11 @@ public class Tuyu {
 
 	/**
 	 * プレイヤーを追加します
+	 * 
 	 * @param strategy プレイヤーの戦略名
 	 */
-	public void addPlayer(String strategy) {
-		players.add(new Player(strategy));
+	public void addPlayer(String strategy, String playerName) {
+		players.add(new Player(strategy, playerName));
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class Tuyu {
 	/**
 	 * 指定したプレイヤーのカード名を返します
 	 * @param playerNum プレイヤー（はじめの人が0）
-	 * @param cardNum カード番号
+	 * @param cardNum   カード番号
 	 * @return カード名
 	 */
 	public String getCardName(int playerNum, int cardNum) {
@@ -70,7 +70,7 @@ public class Tuyu {
 	/**
 	 * 指定したプレイヤーのカードの攻撃力(防御力)を返します
 	 * @param playerNum プレイヤー（はじめの人が0）
-	 * @param cardNum カード番号
+	 * @param cardNum   カード番号
 	 * @return 攻撃力(防御力)
 	 */
 	public int getCardPower(int playerNum, int cardNum) {
@@ -80,7 +80,7 @@ public class Tuyu {
 	/**
 	 * 指定したプレイヤーのカードの種類を返します
 	 * @param playerNum プレイヤー（はじめの人が0）
-	 * @param cardNum カード番号
+	 * @param cardNum   カード番号
 	 * @return カードの種類
 	 */
 	public Card.KIND getCardKind(int playerNum, int cardNum) {
@@ -215,15 +215,36 @@ public class Tuyu {
 			}
 		}
 		if (getPlayer(0).getHP() > getPlayer(1).getHP()) {
+			getPlayer(0).getHand().clearHand();
+			getPlayer(1).getHand().clearHand();
 			getPlayer(0).getHand().add(new Card(0, Card.KIND.WIN, ""));
 			getPlayer(1).getHand().add(new Card(0, Card.KIND.LOSE, ""));
 		} else if (getPlayer(0).getHP() < getPlayer(1).getHP()) {
+			getPlayer(0).getHand().clearHand();
+			getPlayer(1).getHand().clearHand();
 			getPlayer(0).getHand().add(new Card(0, Card.KIND.LOSE, ""));
 			getPlayer(1).getHand().add(new Card(0, Card.KIND.WIN, ""));
 		} else {
+			getPlayer(0).getHand().clearHand();
+			getPlayer(1).getHand().clearHand();
 			getPlayer(0).getHand().add(new Card(0, Card.KIND.PEACE, ""));
 			getPlayer(1).getHand().add(new Card(0, Card.KIND.PEACE, ""));
 		}
 	}
 
+	/**
+	 * 勝利したプレイヤーのオブジェクトを返します。
+	 * 引き分けの場合null返しますので、処理よろしく。
+	 * @return 勝者
+	 */
+	public Player getWinPlayer() {
+		Player result = null;
+		for (Player player : players) {
+			System.out.println(player.getHand().getHands().get(0).getKind());
+			if (player.getHand().getHands().get(0).getKind() == Card.KIND.WIN) {
+				result = player;
+			}
+		}
+		return result;
+	}
 }

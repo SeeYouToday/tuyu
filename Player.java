@@ -6,6 +6,7 @@ public class Player {
 	private Hand hand;
 	private int pain;
 	private Strategy strategy;
+	private String playerName;
 
 	/**
 	 *
@@ -15,10 +16,15 @@ public class Player {
 	 *
 	 */
 
-	public Player(String strategyName) {
+	public Player(String strategyName, String playerName) {
 		hand = new Hand();
+		this.playerName = playerName;
 		this.strategy = setStrategy(strategyName);
 		this.isDefence = true;
+	}
+	
+	public String getPlayerName() {
+		return playerName;
 	}
 
 	/**
