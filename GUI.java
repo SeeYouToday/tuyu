@@ -276,9 +276,9 @@ public class GUI extends JFrame implements ActionListener {
 
 		if (cmd.equals("男の子戦略")) {
 			//ここにすとらてじいいいいいいを
-			tuyu.addPlayer(Strategy.STRATEGY.PLAYERSTRATEGY.name());
+			tuyu.addPlayer(Strategy.STRATEGY.PLAYERSTRATEGY.name(), playerName);
 			//tuyu.addPlayer(Strategy.STRATEGY.GIRLSTRATEGY.name());
-			tuyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name());
+			tuyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name(), Strategy.STRATEGY.BOYSTRATEGY.toString());
 			aiteName = Strategy.STRATEGY.BOYSTRATEGY.toString();
 			run();
 			layout.next(contentPane);
@@ -286,9 +286,9 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		if (cmd.equals("女の子戦略")) {
 			//生成して欲しいねんけどわからんち
-			tuyu.addPlayer(Strategy.STRATEGY.PLAYERSTRATEGY.name());
+			tuyu.addPlayer(Strategy.STRATEGY.PLAYERSTRATEGY.name(), playerName);
 			//uyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name());
-			tuyu.addPlayer(Strategy.STRATEGY.GIRLSTRATEGY.name());
+			tuyu.addPlayer(Strategy.STRATEGY.GIRLSTRATEGY.name(), Strategy.STRATEGY.GIRLSTRATEGY.toString());
 			aiteName = Strategy.STRATEGY.GIRLSTRATEGY.toString();
 			run();
 			layout.next(contentPane);
@@ -297,17 +297,17 @@ public class GUI extends JFrame implements ActionListener {
 
 		if (cmd.equals("Gandou戦略")) {
 			//生成して欲しいねんけどわからんち
-			tuyu.addPlayer(Strategy.STRATEGY.GANDOUSTRATEGY.name());
+			tuyu.addPlayer(Strategy.STRATEGY.PLAYERSTRATEGY.name(), playerName);
 			//tuyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name());
-			tuyu.addPlayer(Strategy.STRATEGY.GANDOUSTRATEGY.name());
+			tuyu.addPlayer(Strategy.STRATEGY.GANDOUSTRATEGY.name(), Strategy.STRATEGY.GANDOUSTRATEGY.toString());
 			aiteName = Strategy.STRATEGY.GANDOUSTRATEGY.toString();
 			run();
 			layout.next(contentPane);
 
 		}
 		if (cmd.equals("パスんご")) {
-			if (tuyu.decideAttackCard(0).kind != Card.KIND.TOKEN
-					&& !(turnType == Card.KIND.DEFENCE && whoMovable == WHOMOVABLE.PLAYER)) {
+			if ((tuyu.decideAttackCard(0).kind != Card.KIND.TOKEN && turnType == Card.KIND.ATTACK)
+					|| !(whoMovable == WHOMOVABLE.PLAYER)) {
 				broadCastBox.setText("あんた攻撃できるやろ！！\n");
 				return;
 			}
@@ -316,6 +316,7 @@ public class GUI extends JFrame implements ActionListener {
 			aiteCardLabel.setIcon(titlegui.createIcomImageLabel("./png/" + nanimonaio + ".png"));
 			aiteCardLabel.setVisible(true);
 			tuyuAction.setDefenceCard(nanimonaio);
+			cardUpdate();
 			turnUpdate();
 		}
 
@@ -457,11 +458,9 @@ public class GUI extends JFrame implements ActionListener {
 	}
 
 	public void updateHP() {
-		playerHPbar.setValue((int) tuyu.getPlayer(0).getHP() / playerHP * 100);
-		System.out.println("プレイヤーHP:" + (int) tuyu.getPlayer(0).getHP() / playerHP * 100);
-		aiteHPbar.setValue((int) tuyu.getPlayer(1).getHP() / aiteHP * 100);
+		playerHPbar.setValue(tuyu.getPlayer(0).getHP() * 100 / playerHP);
+		aiteHPbar.setValue(tuyu.getPlayer(1).getHP() * 100 / aiteHP);
 		playerNameAndHP.setText(playerName + " " + tuyu.getPlayer(0).getHP() + "/" + playerHP);
-		System.out.println("あいてのHP:" + (int) tuyu.getPlayer(1).getHP() / aiteHP * 100);
 		aiteNameAndHP.setText(aiteName + "  " + tuyu.getPlayer(1).getHP() + "/" + aiteHP);
 	}
 

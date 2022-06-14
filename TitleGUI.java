@@ -134,13 +134,13 @@ public class TitleGUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == boyButton) {
 			//ここにすとらてじいいいいいいを
-			tuyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name());
+			tuyu.addPlayer(Strategy.STRATEGY.BOYSTRATEGY.name(), Strategy.STRATEGY.BOYSTRATEGY.toString());
 			titleGUI.setVisible(false);
 
 		}
 		if (event.getSource() == girlButton) {
 			//生成して欲しいねんけどわからんち
-			tuyu.addPlayer(Strategy.STRATEGY.GIRLSTRATEGY.name());
+			tuyu.addPlayer(Strategy.STRATEGY.GIRLSTRATEGY.name(), Strategy.STRATEGY.GIRLSTRATEGY.toString());
 			titleGUI.setVisible(false);
 
 		}
