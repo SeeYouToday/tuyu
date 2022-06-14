@@ -148,6 +148,10 @@ public class Tuyu {
      * player0の行動メソッド
      */
     private void playerZeroAction() {
+    	System.out.println(getPlayer(0).getStrategy() + ": "+getPlayer(0).getHand().getHands());
+    	System.out.println(getPlayer(1).getStrategy() + ": "+getPlayer(1).getHand().getHands());
+    	System.out.println(getPlayer(0).getStrategy() + "の攻撃カード: "+decideAttackCard(0));
+    	System.out.println(getPlayer(1).getStrategy() + "の防御カード: "+decideDefenceCard(1));
     	TuyuAction tuyuAction = new TuyuAction(decideAttackCard(0), decideDefenceCard(1), this);
     	tuyuAction.action(1);
     	
@@ -157,6 +161,10 @@ public class Tuyu {
      * player1の行動メソッド
      */
     private void playerOneAction() {
+    	System.out.println(getPlayer(0).getStrategy() + ": "+getPlayer(0).getHand().getHands());
+    	System.out.println(getPlayer(1).getStrategy() + ": "+getPlayer(1).getHand().getHands());
+    	System.out.println(getPlayer(1).getStrategy() + "の攻撃カード: "+decideAttackCard(1));
+    	System.out.println(getPlayer(0).getStrategy() + "の防御カード: "+decideDefenceCard(0));
     	TuyuAction tuyuAction = new TuyuAction(decideAttackCard(1), decideDefenceCard(0), this);
     	tuyuAction.action(0);
     	
